@@ -1,0 +1,379 @@
+{
+  "Bromod:Strike_Bro": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! Damage."
+  },
+  "Bromod:Defend_Bro": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "Bromod:SlashDash": {
+    "NAME": "Slash Dash",
+    "DESCRIPTION": "bromod:Combo. NL Deal !Bromod:ComboDamage! damage.",
+    "EXTENDED_DESCRIPTION":[" NL (Total damage = !Bromod:ComboDamage! )"]
+  },
+  "Bromod:RadialBlind": {
+    "NAME": "Radial Blind",
+    "DESCRIPTION": "Gain !B! Block. NL Gain 1 bromod:Blur. NL Apply !M! Weak to all enemies.",
+    "UPGRADE_DESCRIPTION":"Gain !B! Block. NL Gain 1 bromod:Blur. NL Apply !M! Weak and !M! Vulnerable to ALL enemies."
+  },
+  "Bromod:FastHands": {
+    "NAME": "Fast Hands",
+    "DESCRIPTION": "Discard a random card from your hand and draw two cards.",
+    "UPGRADE_DESCRIPTION":"Discard one card from your hand and draw two cards."
+  },
+  "Bromod:HeatedCharge": {
+    "NAME": "Heated Charge",
+    "DESCRIPTION": "Gain !M! bromod:Heat",
+    "UPGRADE_DESCRIPTION":"Gain !M! bromod:Heat. NL Innate."
+  },
+  "Bromod:Stormbringer": {
+    "NAME": "Stormbringer",
+    "DESCRIPTION": "Gain !M! bromod:Electricity",
+    "UPGRADE_DESCRIPTION":"Gain !M! bromod:Electricity. NL Innate."
+  },
+  "Bromod:ContagiousSpread": {
+    "NAME": "Contagious Spread",
+    "DESCRIPTION": "Gain !M! bromod:Toxin",
+    "UPGRADE_DESCRIPTION":"Gain !M! bromod:Toxin. NL Innate."
+  },
+  "Bromod:NorthWind": {
+    "NAME": "North Wind",
+    "DESCRIPTION": "Gain !M! bromod:Cold",
+    "UPGRADE_DESCRIPTION":"Gain !M! bromod:Cold. NL Innate."
+  },
+  "Bromod:ChillingReload": {
+    "NAME": "Chilling Reload",
+    "DESCRIPTION": "Draw one attack from your draw pile. Gain !M! bromod:Cold.",
+    "UPGRADE_DESCRIPTION":""
+  },
+  "Bromod:CollisionForce": {
+    "NAME": "Collision Force",
+    "DESCRIPTION": "Gain !M! bromod:Impact.",
+    "UPGRADE_DESCRIPTION":"Gain !M! bromod:Impact. NL Innate."
+  },
+  "Bromod:NoReturn": {
+    "NAME": "No Return",
+    "DESCRIPTION": "Gain !M! bromod:Puncture.",
+    "UPGRADE_DESCRIPTION":"Gain !M! bromod:Puncture. NL Innate."
+  },
+  "Bromod:JaggedEdge": {
+    "NAME": "Jagged Edge",
+    "DESCRIPTION": "Gain !M! bromod:Slash.",
+    "UPGRADE_DESCRIPTION":"Gain !M! bromod:Slash. NL Innate."
+  },
+  "Bromod:RendingStrike": {
+    "NAME": "Rending Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! bromod:Bleed. NL Apply !Bromod:SecondMagic! Weak.",
+    "UPGRADE_DESCRIPTION":""
+  },
+  "Bromod:LifeStrike": {
+    "NAME": "Life Strike",
+    "DESCRIPTION": "Deal !D! damage and heal for the amount of unblocked damage dealt. NL Increase the cost of this card by [E]  this combat.",
+    "UPGRADE_DESCRIPTION":""
+  },
+  "Bromod:BulletJump": {
+    "NAME": "Bullet Jump",
+    "DESCRIPTION": "Gain !B! block. NL Gain bromod:Flight",
+    "UPGRADE_DESCRIPTION":""
+  },
+  "Bromod:FashionFrame": {
+    "NAME": "Fashion Frame",
+    "DESCRIPTION": "Draw one card and upgrade all cards in your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION":"Draw one card and upgrade all cards in your hand."
+  },
+  "Bromod:ArchwingLauncher": {
+    "NAME": "Archwing Launcher",
+    "DESCRIPTION": "Gain !M! bromod:FLight.",
+    "UPGRADE_DESCRIPTION":""
+  },
+  "Bromod:Forma": {
+    "NAME": "Forma",
+    "DESCRIPTION": "Discard a random card from your hand. NL It costs 0 this combat. NL Exhaust.",
+    "UPGRADE_DESCRIPTION":"Discard a card from your hand. NL It costs 0 this combat. NL Exhaust."
+  },
+  "Bromod:RadialJavelin": {
+    "NAME": "Radial Javelin",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies.",
+    "UPGRADE_DESCRIPTION":"Deal !D! damage to ALL enemies. NL Gain !M! Strength per enemy hit."
+  },
+  "Bromod:ExaltedBlade": {
+    "NAME": "Exalted Blade",
+    "DESCRIPTION": "Gain bromod:Exalted.",
+    "UPGRADE_DESCRIPTION":"Gain bromod:Exalted. NL Gain bromod:Chromatic_Blade."
+  },
+  "Bromod:ExaltedCancel": {
+    "NAME": "Exalted Cancel",
+    "DESCRIPTION": "Retain. NL Lose bromod:Exalted. NL Add [#f1bf2c]Exalted[] [#f1bf2c]Blade[] to your hand.",
+    "UPGRADE_DESCRIPTION":"Retain. NL Lose bromod:Exalted. NL Lose bromod:Chromatic_Blade. NL Add [#f1bf2c]Exalted[] [#f1bf2c]Blade[] to your hand."
+  },
+  "Bromod:Vitality": {
+    "NAME": "Vitality",
+    "DESCRIPTION": "Gain !M! temporary HP.",
+    "UPGRADE_DESCRIPTION":""
+  },
+  "Bromod:Redirection": {
+    "NAME": "Redirection",
+    "DESCRIPTION": "Next turn, gain block equal to !M! times your current block.",
+    "UPGRADE_DESCRIPTION":""
+  },
+  "Bromod:SteelFiber": {
+    "NAME": "Steel Fiber",
+    "DESCRIPTION": "Gain !M! Plated Armor.",
+    "UPGRADE_DESCRIPTION":""
+  },
+  "Bromod:VitalSense": {
+    "NAME": "Vital Sense",
+    "DESCRIPTION": "Deal !D! Damage. NL If the enemy is Vulnerable, deal !D! again.",
+    "UPGRADE_DESCRIPTION":"Deal !D! Damage. NL If the enemy is Vulnerable, deal !D! two additional times."
+  },
+  "Bromod:ShatteringImpact": {
+    "NAME": "Shattering Impact",
+    "DESCRIPTION": "Remove all block from the enemy and deal !D! Damage. If the enemy had no block, apply !M! Vulnerable.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:PressurePoint": {
+    "NAME": "Pressure Point",
+    "DESCRIPTION": "Your next attack deals double damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:BodyCount": {
+    "NAME": "Body Count",
+    "DESCRIPTION": "bromod:Combo. NL When you kill a monster, add a random bromod:Combo card to your hand.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:SlipMagazine": {
+    "NAME": "Slip Magazine",
+    "DESCRIPTION": "Whenever a card is Exhausted, draw a card.",
+    "UPGRADE_DESCRIPTION": "Whenever a card is Exhausted, draw 2 cards."
+  },
+  "Bromod:QuickDraw": {
+    "NAME": "Quick Draw",
+    "DESCRIPTION": "If Drawn, draw a card. NL If discarded, draw a card and discard a card",
+    "UPGRADE_DESCRIPTION": "If Drawn, draw a card. NL If discarded, draw !M! cards and discard 1 card. NL If Exhausted, draw !M! cards and Exhaust a card.",
+    "EXTENDED_DESCRIPTION": ["This card can't be used."]
+  },
+  "Bromod:Reflection": {
+    "NAME": "Reflection",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! bromod:Reflection.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:BloodRush": {
+    "NAME": "Blood Rush",
+    "DESCRIPTION": "This turn, all your attacks benefit from bromod:Combo.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:BriefRespite": {
+    "NAME": "Brief Respite",
+    "DESCRIPTION": "Whenever you use a card, if you have no Block, gain Block equal to !M! times the cost of that card.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:FinishingTouch": {
+    "NAME": "Finishing Touch",
+    "DESCRIPTION": "bromod:Combo. Exhaust. NL Deal !Bromod:ComboDamage! damage. NL This card's bromod:Combo stacks indefinitely.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Fury": {
+    "NAME": "Fury",
+    "DESCRIPTION": "Exhaust all non-attack cards in your hand and add a random attack to your hand for each exhausted card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Exhaust all non-attack cards in your hand and add a random attack to your hand for each exhausted card. They cost 0 this turn. NL Exhaust."
+  },
+  "Bromod:HornetStrike": {
+    "NAME": "Hornet Strike",
+    "DESCRIPTION": "Deald !D! Damage.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:KillingBlow": {
+    "NAME": "Killing Blow",
+    "DESCRIPTION": "bromod:Combo. Exhaust. NL Deal !Bromod:ComboDamage! Damage and, if the attack kills the target, regain the current energy cost of the card and add a copy of it to your hand.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Maglev": {
+    "NAME": "Maglev",
+    "DESCRIPTION": "Gain !B! Block and draw 1 card. If the card is Bullet Jump, play it immediately for free.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block and draw 1 card. If the card is Bullet Jump, play it immediately for free. NL Next turn gain !B! Block."
+  },
+  "Bromod:OrganShatter": {
+    "NAME": "Organ Shatter",
+    "DESCRIPTION": "bromod:Combo. NL Deal !D! Damage. Apply !Bromod:ComboMagic! Vulnerable. NL bromod:Combo affects this card's Vulnerable amount instead of damage.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [" (Combo x", ")"]
+  },
+  "Bromod:Patagium": {
+    "NAME": "Patagium",
+    "DESCRIPTION": "Whenever you play an attack this turn, gain !M! bromod:Flight. NL This bromod:Flight is not conserved next turn.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:PointBlank": {
+    "NAME": "Point Blank",
+    "DESCRIPTION": "Deliver a single blow dealing !D! Damage to ALL enemies per attack in your hand. Discard all attacks in your hand. ",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": ["NL (You have ", " attack). NL Exhaust.", " attacks). NL Exhaust."]
+  },
+  "Bromod:PointStrike": {
+    "NAME": "Point Strike",
+    "DESCRIPTION": "For the next !M! turns, apply 3 Vulnerable to target. Then, target receives damage equal to their Vulnerable amount.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Provoked": {
+    "NAME": "Provoked",
+    "DESCRIPTION": "Whenever you receive Vulnerable, gain the same amount of Strength.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:ReflexCoil": {
+    "NAME": "Reflex Coil",
+    "DESCRIPTION": "Reduce the cost of al cards in your hand by 1 this turn.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Rejuvenation": {
+    "NAME": "Rejuvenation",
+    "DESCRIPTION": "Gain !M! bromod:Regeneration.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:RelentlessCombination": {
+    "NAME": "Relentless Combination",
+    "DESCRIPTION": "This turn, whenever you use a bromod:Combo card, draw another bromod:Combo card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "This turn, whenever you use a bromod:Combo card, draw another bromod:Combo card."
+  },
+  "Bromod:SeismicWave": {
+    "NAME": "Seismic Wave",
+    "DESCRIPTION": "You can only use this card if you have bromod:Flight. Loose your bromod:Flight and deal !D! Damage to All enemies, plus !M! per stack of bromod:Flight.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": ["You need #bFlight for this card to have any effect."]
+  },
+  "Bromod:Serration": {
+    "NAME": "Serration",
+    "DESCRIPTION": "Select an attack in your hand and increase it's base damage by !M! % for the combat. NL Exhaust",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:SpeedTrigger": {
+    "NAME": "Speed Trigger",
+    "DESCRIPTION": "Play the next !M! top cards from your deck. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:SplitChamber": {
+    "NAME": "Split Chamber",
+    "DESCRIPTION": "Choose a card in your hand. For the next !M! rounds, add a copy of it to your hand at the start of your turn. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:SteelCharge": {
+    "NAME": "Steel Charge",
+    "DESCRIPTION": "Gain 1 Strength for each !M! cards in your deck.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:TacticalPump": {
+    "NAME": "Tactical Pump",
+    "DESCRIPTION": "Discard your hand and draw the same amount of cards.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:TargetCracker": {
+    "NAME": "Target Cracker",
+    "DESCRIPTION": "Deal !D! Damage. If the enemy is Weakened, deal !D! damage an additional time",
+    "UPGRADE_DESCRIPTION": "Deal !D! Damage. If the enemy is Weakened, deal !D! damage two additional times"
+  },
+  "Bromod:Stretch": {
+    "NAME": "Stretch",
+    "DESCRIPTION": "Non-attack damage NL ( like that from effects such as Thorns ), is dealt to all enemies",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:EnergySiphon": {
+    "NAME": "Energy Siphon",
+    "DESCRIPTION": "Each two turns, gain [E]  .",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Adaptation": {
+    "NAME": "Adaptation",
+    "DESCRIPTION": "Whenever you receive attack damage, ALL enemies lose !M! Strength for the turn.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Berserker": {
+    "NAME": "Berserker",
+    "DESCRIPTION": "Whenever you play !M! attacks in a single turn, gain [E]  and draw a card.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Blaze": {
+    "NAME": "Blaze",
+    "DESCRIPTION": "Gain !M! Strength for this turn. NL Gain !Bromod:SecondMagic! bromod:Heat",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:ToxicFlight": {
+    "NAME": "Toxic Flight",
+    "DESCRIPTION": "Gain !B! Block. NL Gain 1 bromod:Flight. NL Gain !M! bromod:Toxin. NL This card counts as a Bullet Jump.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:FocusEnergy": {
+    "NAME": "Focus Energy",
+    "DESCRIPTION": "Reduce the cost of a random card in you hand to 0 this turn. NL Gain !M! bromod:Electricity.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:VoltaicStrike": {
+    "NAME": "Voltaic Strike",
+    "DESCRIPTION": "Deal !D! damage, then deal !M! additional damage to ALL enemies two times.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage, then deal !M! additional damage to ALL enemies two times. NL Gain !Bromod:SecondMagic! bromod:Electricity."
+  },
+  "Bromod:ThermiteRounds": {
+    "NAME": "Thermite Rounds",
+    "DESCRIPTION": "Deal !D! damage and apply 1 bromod:Burn three times.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage and apply 1 bromod:Burn three times. NL Gain !M! bromod:Heat."
+  },
+  "Bromod:Frostbite": {
+    "NAME": "Frostbite",
+    "DESCRIPTION": "Apply !M! bromod:Slow and deal damage equal to the target's bromod:Slow amount.",
+    "UPGRADE_DESCRIPTION": "Deal !M! bromod:Slow and deal damage equal to the target's bromod:Slow amount. NL Gain !Bromod:SecondMagic! bromod:Cold."
+  },
+  "Bromod:ToxicBarrage": {
+    "NAME": "Toxic Barrage",
+    "DESCRIPTION": "Deal !D! Damage and apply the same amount of Poison to ALL enemies.",
+    "UPGRADE_DESCRIPTION": "Deal !D! Damage and apply the same amount of Poison to ALL enemies. NL Gain !M! bromod:Toxin."
+  },
+  "Bromod:ConditionOverload": {
+    "NAME": "Condition Overload",
+    "DESCRIPTION": "Deal !D! Damage and apply for each power the enemy has. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Continuity": {
+    "NAME": "Continuity",
+    "DESCRIPTION": "Gain a copy of one of your powers at random.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:DriftingContact": {
+    "NAME": "Drifting Contact",
+    "DESCRIPTION": "bromod:Combo. NL Gain !Bromod:ComboMagic! bromod:Elemental. NL Combo affects this card's bromod:Elemental amount.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Flow": {
+    "NAME": "Flow",
+    "DESCRIPTION": "Gain [E] [E]",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] NL Next turn, gain [E] [E]"
+  },
+  "Bromod:HellsChamber": {
+    "NAME": "Hell's Chamber",
+    "DESCRIPTION": "All attacks (Except Basic Strikes) cost 0 and are Exhausted on use.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Intensify": {
+    "NAME": "Intensify",
+    "DESCRIPTION": "Whenever you apply a Debuff, increase it's amount by !M!",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Thunderbolt": {
+    "NAME": "Thunderbolt",
+    "DESCRIPTION": "Gain !M! bromod:Blast. NL bromod:Blast has a 10% chance to affect you.",
+    "UPGRADE_DESCRIPTION": "Gain !M! bromod:Blast."
+  },
+  "Bromod:LethalTorrent": {
+    "NAME": "Lethal Torrent",
+    "DESCRIPTION": "At the start of your turn, add a copy of the first card you draw to your hand.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, play a copy of the first card you draw."
+  },
+  "Bromod:QuickThinking": {
+    "NAME": "Quick Thinking",
+    "DESCRIPTION": "At the end of your turn, gain !M! temporary HP for each unspent [E]  you have.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Rage": {
+    "NAME": "Rage",
+    "DESCRIPTION": "Whenever you receive HP damage, gain [E]",
+    "UPGRADE_DESCRIPTION": ""
+  }
+}

@@ -1,0 +1,149 @@
+[
+  {
+    "PROPER_NAME": "Destruction",
+    "NAMES": [
+      "destruction"
+    ],
+    "DESCRIPTION": "At the start of your turn deal damage to a random creature (including you) for each #yDestruction."
+  },
+  {
+    "PROPER_NAME": "Combo",
+    "NAMES": [
+      "combo",
+      "combos",
+      "comboes"
+    ],
+    "DESCRIPTION": "While on hand, combo cards double their damage and reduce their cost by one for the turn each time you play another combo card. (stacks two times). #yCombo damage scales off base damage and is not affected by powers."
+  },
+  {
+    "PROPER_NAME": "Blur",
+    "NAMES": [
+      "blur"
+    ],
+    "DESCRIPTION": "Your block is not lost this turn."
+  },
+  {
+    "PROPER_NAME": "Cold",
+    "NAMES": [
+      "cold"
+    ],
+    "DESCRIPTION": "Your attacks have a chance to #bSlow enemies."
+  },
+  {
+    "PROPER_NAME": "Slow",
+    "NAMES": [
+      "slow"
+    ],
+    "DESCRIPTION": "You deal additional damage on #bSlowed enemies and their #Slow increases each time you play a card."
+  },
+  {
+    "PROPER_NAME": "Heat",
+    "NAMES": [
+      "heat"
+    ],
+    "DESCRIPTION": "Your attacks have a chance to #rBurn enemies, causing them to take aditional damage on their turn."
+  },
+  {
+    "PROPER_NAME": "Toxin",
+    "NAMES": [
+      "toxin"
+    ],
+    "DESCRIPTION": "Your attacks have a chance to #gPoison enemies."
+  },
+  {
+    "PROPER_NAME": "Electricity",
+    "NAMES": [
+      "electricity"
+    ],
+    "DESCRIPTION": "Your attacks have a chance to #bShock enemies for additional damage."
+  },
+  {
+    "PROPER_NAME": "Blast",
+    "NAMES": [
+      "blast"
+    ],
+    "DESCRIPTION": "Your attacks have a chance to #yExplode and deal bonus damage to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Burn",
+    "NAMES": [
+      "burn",
+      "burnt",
+      "burning"
+    ],
+    "DESCRIPTION": "#rBurning enemies receive varying damage several times based on the amount of #rBurn."
+  },
+  {
+    "PROPER_NAME": "Impact",
+    "NAMES": [
+      "impact"
+    ],
+    "DESCRIPTION": "Your attacks grant you #y3 #bblock."
+  },
+  {
+    "PROPER_NAME": "Puncture",
+    "NAMES": [
+      "puncture"
+    ],
+    "DESCRIPTION": "Your attacks apply #bWeak to the target of the attack."
+  },
+  {
+    "PROPER_NAME": "Slash",
+    "NAMES": [
+      "slash"
+    ],
+    "DESCRIPTION": "Your attacks apply #rBleed to the target of the attack, causing them to lose #yHP based on their #ymax #yHP."
+  },
+  {
+    "PROPER_NAME": "Bleed",
+    "NAMES": [
+      "bleed",
+      "bleeding"
+    ],
+    "DESCRIPTION": "#rBleeding creatures lose #yHP based of their #ymax #yHP each turn."
+  },
+  {
+    "PROPER_NAME": "Flight",
+    "NAMES": [
+      "flight",
+      "fly"
+    ],
+    "DESCRIPTION": "Receive 50% less attack damage. Decreases when hit, but it's recovered at the start of the turn if it's not zero."
+  },
+  {
+    "PROPER_NAME": "Chromatic Blade",
+    "NAMES": [
+      "chromatic blade",
+      "chromatic_blade"
+    ],
+    "DESCRIPTION": "At the start of your turn, gain 2 #bElectricity, [#a6ffff]Cold[], #rHeat or #gToxin at random."
+  },
+  {
+    "PROPER_NAME": "Exalted",
+    "NAMES": [
+      "exalted"
+    ],
+    "DESCRIPTION": "At the start of your turn, lose [E] . Your attacks deal bonus damage to ALL enemies equal to half the attack damage."
+  },
+  {
+    "PROPER_NAME": "Reflection",
+    "NAMES": [
+      "reflection"
+    ],
+    "DESCRIPTION": "When you receive damage, deal that same amount of damage to the attacker and lose 1 #yReflection. At the start of your turn, #yReflection is lost."
+  },
+  {
+    "PROPER_NAME": "Regeneration",
+    "NAMES": [
+      "regeneration"
+    ],
+    "DESCRIPTION": "At the end of your turn #gHeal for the amount of #yRegeneration you have and then reduce #yRegeneration by one."
+  },
+  {
+    "PROPER_NAME": "Elemental",
+    "NAMES": [
+      "elemental"
+    ],
+    "DESCRIPTION": "Gain either [#a6ffff]Cold[], #rHeat, #bElectricity or #gToxin at random."
+  }
+]

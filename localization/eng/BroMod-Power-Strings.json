@@ -1,0 +1,242 @@
+{
+  "Bromod:CommonPower": {
+          "NAME": "Placeholder Power",
+          "DESCRIPTIONS": [
+                  "You applied #b",
+                  " keyword.",
+                  " keywords."
+          ]
+  },
+  "Bromod:RarePower": {
+          "NAME": "Placeholder Power",
+          "DESCRIPTIONS": [
+                  "At the start of your turn, TOUCH #b",
+                  " enemy.",
+                  " enemies."
+          ]
+  },
+  "Bromod:JudgementPower": {
+          "NAME": "Judgement",
+          "DESCRIPTIONS":
+                  ["Gain strength equal to ", "% of the damage received this turn"]
+  },
+  "Bromod:TowerPower": {
+          "NAME": "Destruction",
+          "DESCRIPTIONS":
+          ["At the end of your turn deal 3 damage to a random creature (including you) ", " times."]
+  },
+  "Bromod:ComboPower": {
+          "NAME": "x2 Combo",
+          "DESCRIPTIONS":
+          ["Your combo attacks deal double damage and cost one less energy"]
+  },
+  "Bromod:Combo2Power": {
+          "NAME": "x4 Combo",
+          "DESCRIPTIONS":
+          ["Your combo attacks deal cuadruple damage and cost two less energy"]
+  },
+  "Bromod:ColdPower": {
+          "NAME": "Cold",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of applying Slow to the target of the attack. (Can combine with other elements for new effects)"]
+  },
+  "Bromod:BlastPower": {
+          "NAME": "Blast",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of dealing 5 bonus damage to ALL enemies. ( [#a6ffff]Cold[] + #rHeat )"]
+  },
+  "Bromod:HeatPower": {
+          "NAME": "Heat",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of burning the target of the attack, causing it to suffer stacking damage multiple times. (Can combine with other elements for new effects)"]
+  },
+  "Bromod:BurnPower": {
+          "NAME": "Burn",
+          "DESCRIPTIONS":
+          ["At the end of turn, receive #b", " damage #b", " times"]
+  },
+  "Bromod:ElectricityPower": {
+          "NAME": "Electricity",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of dealing #b3 bonus damage to the target of the attack. (Can combine with other elements for new effects)"]
+  },
+  "Bromod:ToxinPower": {
+          "NAME": "Toxin",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of applying #b2 #gPoison to the target of the attack (Can combine with other elements for new effects)."]
+  },
+  "Bromod:ViralPower": {
+          "NAME": "Viral",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of reducing the HP of the target of the attack by #b10% of it's current HP ( [#a6ffff]Cold[] + #gToxin )."]
+  },
+  "Bromod:MagneticPower": {
+          "NAME": "Magnetic",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of removing one buff from the target of the attack ( [#a6ffff]Cold[] + #bElectricity )."]
+  },
+  "Bromod:RadiationPower": {
+          "NAME": "Radiation",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of #yirradiating the target of the attack, causing it to deal damage to a random enemy on attack ( #rHeat + #bElectricity )."]
+  },
+  "Bromod:IrradiatedPower": {
+          "NAME": "Irradiated",
+          "DESCRIPTIONS":
+          ["This monster will deal #b", " damage to a random enemy on attack.", "This monster does not intent to attack"]
+  },
+  "Bromod:CorrosivePower": {
+          "NAME": "Corrosive",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of removing all #bblock from the target of the attack and making it #yvulnerable. ( #gToxin + #bElectricity )."]
+  },
+  "Bromod:GasPower": {
+          "NAME": "Gas",
+          "DESCRIPTIONS":
+          ["Your attacks have a #b", "% chance of #gintoxicating the target of the attack, causing it to lose HP each turn and spread #gpoison to all enemies ( #rHeat + #gToxin )."]
+  },
+  "Bromod:IntoxicationPower": {
+          "NAME": "Intoxication",
+          "DESCRIPTIONS":
+          ["This monster will receive #b", " damage and apply #b", " #gpoison to all enemies on it's turn"]
+  },
+  "Bromod:SlashPower": {
+          "NAME": "Slash",
+          "DESCRIPTIONS":
+          ["Your attacks will apply #b", " #rbleed  to the target of the attack, causing it to lose HP each turn based on it's max HP"]
+  },
+  "Bromod:PuncturePower": {
+          "NAME": "Puncture",
+          "DESCRIPTIONS":
+          ["Your attacks will apply #b", " #bWeak to the target of the attack"]
+  },
+  "Bromod:ImpactPower": {
+          "NAME": "Impact",
+          "DESCRIPTIONS":
+          ["Your attacks will grant you #b", " #bBlock"]
+  },
+  "Bromod:BleedPower": {
+    "NAME": "Bleed",
+    "DESCRIPTIONS":
+    ["This monster will lose #b", " HP on it's turn. ( #b", "% of it's max HP)"]
+  },
+  "Bromod:FlyPower": {
+          "NAME": "Flight",
+          "DESCRIPTIONS": [
+                  "Receives 50% less attack damage. Cancelled if dealt attack damage #b",
+                  "Receives 50% less attack damage. Cancelled if dealt attack damage once this turn. Your flight recovers up to #b",
+                  " times this turn. Your flight recovers up to #b",
+                  " at the start of your turn."
+          ]
+  },
+  "Bromod:ExaltedPower": {
+          "NAME": "Exalted",
+          "DESCRIPTIONS":
+          ["At the start of your turn, lose [E] . Your attacks deal bonus damage to ALL enemies equal to half the attack damage."]
+  },
+  "Bromod:ChromaticPower": {
+          "NAME": "Chromatic Blade",
+          "DESCRIPTIONS":
+          ["At the start of your turn, gain 2 #bElectricity, [#a6ffff]Cold[], #rHeat or #gToxin at random."]
+  },
+  "Bromod:BodyCountPower": {
+          "NAME": "Body Count",
+          "DESCRIPTIONS":
+          ["When you #rKill a monster, add ", "a random #yCombo card to your hand.", " random #yCombo cards to your hand", "a random upgraded #yCombo card to your hand.", " random upgraded #yCombo cards to your hand."]
+  },
+  "Bromod:SlipMagazinePower": {
+          "NAME": "Slip Magazine",
+          "DESCRIPTIONS":
+          ["Whenever a card is #yExhausted, draw #b", " card.", " cards."]
+  },
+  "Bromod:ReflectionPower": {
+          "NAME": "Reflection",
+          "DESCRIPTIONS":
+          ["The next time you receive damage this turn, deal that same amount of damage back to the attacker.", "The first ", " times you receive damage this turn, deal that same amount of damage back to the attacker."]
+  },
+  "Bromod:BloodRushPower": {
+    "NAME": "Blood Rush",
+    "DESCRIPTIONS":
+    ["This turn, all your attacks benefit from #yCombo, reducing their cost and multiplying their damage.", "Your Attacks now deal double damage and cost [E] less.", "Your attacks now deal cuadruple damage and cost [E][E] less."]
+  },
+  "Bromod:BriefRespitePower": {
+          "NAME": "Brief Respite",
+          "DESCRIPTIONS":
+          ["If you don't have any #bBlock, gain #bBlock equal to ", " times the cost of the next card you play."]
+  },
+  "Bromod:PatagiumPower": {
+          "NAME": "Patagium",
+          "DESCRIPTIONS":
+          ["Whenever you play an attack this turn, gain #b", " #yFlight."]
+  },
+  "Bromod:PointStrikePower": {
+          "NAME": "Aiming",
+          "DESCRIPTIONS":
+          ["At the start of the turn, Apply #b3 #yVulnerable, after #b", " turns, deal damage equal to the amount of #yVulnerable."]
+  },
+  "Bromod:ProvokedPower": {
+          "NAME": "Provoked",
+          "DESCRIPTIONS":
+          ["For each #yVulnerable you receive, gain #b", " #yStrength."]
+  },
+  "Bromod:RelentlessCombinationPower": {
+          "NAME": "Relentless Combination",
+          "DESCRIPTIONS":
+          ["Whenever you play a #yCombo card, draw ", "another #yCombo card.", " #yCombo cards."]
+  },
+  "Bromod:SplitChamberPower": {
+          "NAME": "Split Chamber",
+          "DESCRIPTIONS":
+          ["At the start of your turn, add a copy of ", " to your hand."]
+  },
+  "Bromod:StretchPower": {
+          "NAME": "Stretch",
+          "DESCRIPTIONS":
+          ["Non-attack damage ( like that from effects such as #bThorns ) is dealt to ALL enemies."]
+  },
+  "Bromod:EnergySiphonPower": {
+          "NAME": "Energy Siphon",
+          "DESCRIPTIONS":
+          ["Next turn, gain [E] .", "After #b", " turns, gain [E] ."]
+  },
+  "Bromod:AdaptationPower": {
+    "NAME": "Adaptation",
+    "DESCRIPTIONS":
+    ["Whenever you receive attack damage, ALL enemies lose #b", " #yStrength for the turn."]
+  },
+  "Bromod:BerserkerPower": {
+    "NAME": "Berserker",
+    "DESCRIPTIONS":
+    ["If you play #b", " more Attacks this turn, gain [E]  and draw a card.", "Next attack you play grants you [E]  and you draw a card", "You can no longer benefit from #yBerserker this turn"]
+  },
+  "Bromod:HellsChamberPower": {
+    "NAME": "Hell's Chamber",
+    "DESCRIPTIONS":
+    ["All attacks (Except Basic Strikes) cost 0 and are #yExhausted on use."]
+  },
+  "Bromod:IntensifyPower": {
+    "NAME": "Intensify",
+    "DESCRIPTIONS":
+    ["Whenever you apply a Debuff on an enemy, increase the amount by #b"]
+  },
+  "Bromod:ThunderboltPower": {
+    "NAME": "Thunderbolt",
+    "DESCRIPTIONS":
+    ["#yBlast power has a #b10% chance of affecting you as well."]
+  },
+  "Bromod:LethalTorrentPower": {
+    "NAME": "Lethal Torrent",
+    "DESCRIPTIONS":
+    ["At the start of your turn, add a copy of the first ", "card you draw to your hand.", "At the start of your turn, play a copy of the first ", "  cards you draw to your hand."]
+  },
+  "Bromod:QuickThinkingPower": {
+    "NAME": "Quick Thinking",
+    "DESCRIPTIONS":
+    ["At the end of your turn, gain ", " #ytemporary #yHP."]
+  },
+  "Bromod:RagePower": {
+    "NAME": "Rage",
+    "DESCRIPTIONS":
+    ["Whenever you receive HP damage, gain "]
+  }
+}
