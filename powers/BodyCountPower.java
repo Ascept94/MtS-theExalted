@@ -6,11 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -18,21 +15,17 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.util.TextureLoader;
-import jdk.nashorn.internal.runtime.DebugLogger;
-import sun.rmi.runtime.Log;
-import sun.security.ssl.Debug;
 
 import java.util.ArrayList;
 
-import static Bromod.DefaultMod.makePowerPath;
+import static Bromod.BroMod.makePowerPath;
 
 public class BodyCountPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("BodyCountPower");
+    public static final String POWER_ID = BroMod.makeID("BodyCountPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -74,9 +67,11 @@ public class BodyCountPower extends AbstractPower implements CloneablePowerInter
         updateDescription();
     }
 
+
+
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (((AbstractMonster)target).isDying || target.currentHealth <= damageAmount) {
+        if (target.currentHealth <= damageAmount) {
             int i;
             for (i = 0; i < amount; i++) {
                 AbstractCard c = PosibleCards.get(MathUtils.random(PosibleCards.size()-1));

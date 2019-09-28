@@ -1,31 +1,26 @@
 package Bromod.powers;
 
-import Bromod.cards.Strike_Bro;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.beyond.Transient;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.util.TextureLoader;
-import com.megacrit.cardcrawl.powers.SlowPower;
+
+import java.util.ArrayList;
 
 public class MagneticPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("MagneticPower");
+    public static final String POWER_ID = BroMod.makeID("MagneticPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -56,31 +51,33 @@ public class MagneticPower extends AbstractPower implements CloneablePowerInterf
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
-        String PowerToRemove = "";
-        for (AbstractPower p : target.powers){
-            if (p.type == PowerType.BUFF){
-                PowerToRemove = p.ID;
-                break;
+
+        ArrayList<AbstractPower> possiblePowers = new ArrayList<>();
+        for (AbstractPower po : target.powers){
+            if (po.type == AbstractPower.PowerType.BUFF && po.amount >= 1 && po.ID != "Fading"){
+                possiblePowers.add(po);
             }
         }
-        if (PowerToRemove == ""){return;}
+        if (possiblePowers.size() == 0){return;}
+
+        AbstractPower powerToRemove = possiblePowers.get(MathUtils.random(0,possiblePowers.size()-1));
 
         int CHANCE = amount*10;
         while(CHANCE >= 100){
-            //PowerToRemove = target.powers.get(MathUtils.random(0,target.powers.size())).ID;
-            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(target,info.owner,PowerToRemove,1));
-            PowerToRemove = "";
-            for (AbstractPower p : target.powers){
-                if (p.type == PowerType.BUFF){
-                    PowerToRemove = p.ID;
-                    break;
+            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(target,info.owner,powerToRemove.ID,1));
+
+            possiblePowers.clear();
+            for (AbstractPower po : target.powers){
+                if (po.type == AbstractPower.PowerType.BUFF && po.amount >= 1){
+                    possiblePowers.add(po);
                 }
             }
-            if (PowerToRemove == ""){return;}
+            if (possiblePowers.size() == 0){return;}
+
             CHANCE -= 100;
         }
         if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(target,info.owner,PowerToRemove,1));
+            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(target,info.owner,powerToRemove.ID,1));
         }
     }
 

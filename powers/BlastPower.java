@@ -1,33 +1,24 @@
 package Bromod.powers;
 
-import Bromod.cards.Strike_Bro;
+import Bromod.BroMod;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import Bromod.DefaultMod;
-import Bromod.cards.Default.DefaultRareAttack;
 import Bromod.util.TextureLoader;
-import com.megacrit.cardcrawl.powers.SlowPower;
 
 public class BlastPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("BlastPower");
+    public static final String POWER_ID = BroMod.makeID("BlastPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -73,6 +64,7 @@ public class BlastPower extends AbstractPower implements CloneablePowerInterface
         for (i=0; i < monstercount; i++){
             multidamage[i] = damage;
         }
+        if (multidamage[0] == 0){return;}
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(info.owner,multidamage, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
         if (info.owner.hasPower("Bromod:ThunderboltPower") && AbstractDungeon.miscRng.random(99) <= 10){
             DamageInfo dmgInfo = new DamageInfo(info.owner,damage, DamageInfo.DamageType.THORNS);

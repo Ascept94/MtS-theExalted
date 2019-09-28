@@ -1,13 +1,10 @@
 package Bromod.powers;
 
-import Bromod.cards.Strike_Bro;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -15,14 +12,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.util.TextureLoader;
 import com.megacrit.cardcrawl.powers.SlowPower;
 
 public class ColdPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("ColdPower");
+    public static final String POWER_ID = BroMod.makeID("ColdPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -55,11 +52,11 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface 
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
         int CHANCE = amount*10;
         while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner,new SlowPower(target,1),1,true));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner,new SlowPower(target,2),2,true));
             CHANCE -= 100;
         }
         if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner,new SlowPower(target,1),1,true));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner,new SlowPower(target,2),2,true));
         }
     }
 
