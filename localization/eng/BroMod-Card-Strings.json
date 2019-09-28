@@ -84,7 +84,7 @@
   },
   "Bromod:ArchwingLauncher": {
     "NAME": "Archwing Launcher",
-    "DESCRIPTION": "Gain !M! bromod:FLight.",
+    "DESCRIPTION": "Gain !M! bromod:Flight.",
     "UPGRADE_DESCRIPTION":""
   },
   "Bromod:Forma": {
@@ -139,7 +139,7 @@
   },
   "Bromod:BodyCount": {
     "NAME": "Body Count",
-    "DESCRIPTION": "bromod:Combo. NL When you kill a monster, add a random bromod:Combo card to your hand.",
+    "DESCRIPTION": "bromod:Combo. NL When you kill an enemy, add a random bromod:Combo card to your hand.",
     "UPGRADE_DESCRIPTION": ""
   },
   "Bromod:SlipMagazine": {
@@ -149,8 +149,8 @@
   },
   "Bromod:QuickDraw": {
     "NAME": "Quick Draw",
-    "DESCRIPTION": "If Drawn, draw a card. NL If discarded, draw a card and discard a card",
-    "UPGRADE_DESCRIPTION": "If Drawn, draw a card. NL If discarded, draw !M! cards and discard 1 card. NL If Exhausted, draw !M! cards and Exhaust a card.",
+    "DESCRIPTION": "Unplayable. NL If Drawn, draw a card. NL If discarded, draw a card and discard a card",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL If Drawn, draw a card. NL If discarded, draw !M! cards and discard 1 card. NL If Exhausted, draw !M! cards and Exhaust a card.",
     "EXTENDED_DESCRIPTION": ["This card can't be used."]
   },
   "Bromod:Reflection": {
@@ -180,7 +180,7 @@
   },
   "Bromod:HornetStrike": {
     "NAME": "Hornet Strike",
-    "DESCRIPTION": "Deald !D! Damage.",
+    "DESCRIPTION": "Deal !D! Damage.",
     "UPGRADE_DESCRIPTION": ""
   },
   "Bromod:KillingBlow": {
@@ -206,9 +206,9 @@
   },
   "Bromod:PointBlank": {
     "NAME": "Point Blank",
-    "DESCRIPTION": "Deliver a single blow dealing !D! Damage to ALL enemies per attack in your hand. Discard all attacks in your hand. ",
+    "DESCRIPTION": "Deliver a single blow dealing !D! Damage to ALL enemies per attack in your hand. Discard all attacks in your hand. NL Exhaust. ",
     "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": ["NL (You have ", " attack). NL Exhaust.", " attacks). NL Exhaust."]
+    "EXTENDED_DESCRIPTION": ["NL (You have ", " attack)", " attacks)"]
   },
   "Bromod:PointStrike": {
     "NAME": "Point Strike",
@@ -278,7 +278,7 @@
   },
   "Bromod:EnergySiphon": {
     "NAME": "Energy Siphon",
-    "DESCRIPTION": "Each two turns, gain [E]  .",
+    "DESCRIPTION": "Every other turn, gain [E]  .",
     "UPGRADE_DESCRIPTION": ""
   },
   "Bromod:Adaptation": {
@@ -348,7 +348,7 @@
   },
   "Bromod:HellsChamber": {
     "NAME": "Hell's Chamber",
-    "DESCRIPTION": "All attacks (Except Basic Strikes) cost 0 and are Exhausted on use.",
+    "DESCRIPTION": "Attacks cost 0. Whenever you play an attack (except Basic Strikes), exhaust it.",
     "UPGRADE_DESCRIPTION": ""
   },
   "Bromod:Intensify": {
@@ -373,7 +373,12 @@
   },
   "Bromod:Rage": {
     "NAME": "Rage",
-    "DESCRIPTION": "Whenever you receive HP damage, gain [E]",
+    "DESCRIPTION": "Whenever you lose HP, gain [E]",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:Foundry": {
+    "NAME": "The Foundry",
+    "DESCRIPTION": "At the start of every other turn, exhaust a card from your hand and, next turn, add a random card to your hand.",
     "UPGRADE_DESCRIPTION": ""
   }
 }

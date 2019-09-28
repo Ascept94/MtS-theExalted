@@ -73,7 +73,7 @@
   "Bromod:MagneticPower": {
           "NAME": "Magnetic",
           "DESCRIPTIONS":
-          ["Your attacks have a #b", "% chance of removing one buff from the target of the attack ( [#a6ffff]Cold[] + #bElectricity )."]
+          ["Your attacks have a #b", "% chance of reducing one buff from the target of the attack by 1 ( [#a6ffff]Cold[] + #bElectricity )."]
   },
   "Bromod:RadiationPower": {
           "NAME": "Radiation",
@@ -237,6 +237,18 @@
   "Bromod:RagePower": {
     "NAME": "Rage",
     "DESCRIPTIONS":
-    ["Whenever you receive HP damage, gain "]
+    ["Whenever you lose HP, gain "]
+  },
+  "Bromod:FoundryPower": {
+    "NAME": "Crafting",
+    "DESCRIPTIONS":
+    ["Operator, you have foundry items ready - CLAIM THEM NOW! - at your earliest convenience.",
+      "Operator, my foundry has completed a new item! Does this please the Operator?",
+      "Foundry items ready to claim, Operator.",
+      "Gun-gun-gun-- Hmmm... foundry has items for you, Operator.",
+      "Ordis has completed a foundry task. No,don't mention it!",
+      "Cephalon Ordis has completed a build. Check the foundry.",
+      "Foundry items can be claimed, Operator. Are you pleased?",
+      "Items in the foundry are being build. Next turn, add #b", " random card to your hand.", " random cards to your hand."]
   }
 }
