@@ -2,6 +2,7 @@ package Bromod.cards;
 
 
 
+import Bromod.BroMod;
 import Bromod.powers.HeatPower;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,17 +10,17 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
 import Bromod.characters.TheExalted;
 
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class HeatedCharge extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(HeatedCharge.class.getSimpleName());
+    public static final String ID = BroMod.makeID(HeatedCharge.class.getSimpleName());
     public static final String IMG = makeCardPath("HeatedCharge.png");
 
     // /TEXT DECLARATION/
@@ -30,7 +31,7 @@ public class HeatedCharge extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_UNCOMMON;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -45,7 +46,7 @@ public class HeatedCharge extends AbstractDynamicCard {
 
 
     public HeatedCharge() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         baseMagicNumber = magicNumber = AMOUNT;
         this.isInnate=false;
     }

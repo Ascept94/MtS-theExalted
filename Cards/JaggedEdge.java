@@ -9,17 +9,18 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.characters.TheExalted;
 
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class JaggedEdge extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(JaggedEdge.class.getSimpleName());
+    public static final String ID = BroMod.makeID(JaggedEdge.class.getSimpleName());
     public static final String IMG = makeCardPath("JaggedEdge.png");
 
     // /TEXT DECLARATION/
@@ -30,7 +31,7 @@ public class JaggedEdge extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_RARE;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -45,7 +46,7 @@ public class JaggedEdge extends AbstractDynamicCard {
 
 
     public JaggedEdge() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         baseMagicNumber = magicNumber = AMOUNT;
         this.isInnate=false;
     }

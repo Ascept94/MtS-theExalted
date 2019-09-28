@@ -1,22 +1,27 @@
 package Bromod.cards;
 
-import Bromod.BroMod;
+import Bromod.powers.FoundryPower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import Bromod.BroMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static Bromod.BroMod.makeCardPath;
 import static Bromod.BroMod.setModBackground;
 
-public class SteelCharge extends AbstractDynamicCard {
+public class Foundry extends AbstractDynamicCard {
 
-    public static final String ID = BroMod.makeID(SteelCharge.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
-    public static final String IMG = makeCardPath("SteelCharge.png");
+    public static final String ID = BroMod.makeID(Foundry.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String IMG = makeCardPath("Foundry.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 
@@ -26,13 +31,13 @@ public class SteelCharge extends AbstractDynamicCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON; //  Up to you, I like auto-complete on these
+    private static final CardRarity RARITY = CardRarity.COMMON; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.SELF;  //   since they don't change much.
     private static final CardType TYPE = CardType.POWER;       //
     public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final int COST = 1;
-    private static final int UPGRADED_COST = 1;
+    private static final int UPGRADED_COST = 0;
 
     private static final int DAMAGE = 0;
     private static final int UPGRADE_PLUS_DMG = 0;
@@ -40,8 +45,8 @@ public class SteelCharge extends AbstractDynamicCard {
     private static final int BLOCK = 0;
     private static final int UPGRADE_PLUS_BLOCK = 0;
 
-    private static final int AMOUNT = 6;
-    private static final int UPGRADE_PLUS_AMOUNT = -2;
+    private static final int AMOUNT = 0;
+    private static final int UPGRADE_PLUS_AMOUNT = 0;
 
     private static final int SECOND_AMOUNT = 0;
     private static final int UPGRADE_SECOND_AMOUNT = 0;
@@ -49,8 +54,8 @@ public class SteelCharge extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
 
-    public SteelCharge() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
+    public Foundry() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;
@@ -61,8 +66,7 @@ public class SteelCharge extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int powerAmount = p.masterDeck.group.size() / magicNumber;
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new StrengthPower(p,powerAmount),powerAmount));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new FoundryPower(p,p,magicNumber)));
     }
 
 

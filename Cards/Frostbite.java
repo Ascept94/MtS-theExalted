@@ -1,5 +1,6 @@
 package Bromod.cards;
 
+import Bromod.BroMod;
 import Bromod.powers.ColdPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -8,17 +9,17 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.SlowPower;
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class Frostbite extends AbstractDynamicCard {
 
-    public static final String ID = DefaultMod.makeID(Frostbite.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = BroMod.makeID(Frostbite.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
     public static final String IMG = makeCardPath("Frostbite.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -32,7 +33,7 @@ public class Frostbite extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.RARE; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.ATTACK;       //
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_RARE;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -53,7 +54,7 @@ public class Frostbite extends AbstractDynamicCard {
 
 
     public Frostbite() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         baseDamage = DAMAGE;
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;

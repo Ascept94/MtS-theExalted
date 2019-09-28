@@ -1,22 +1,23 @@
 package Bromod.cards;
 
+import Bromod.BroMod;
 import Bromod.powers.BodyCountPower;
 import Bromod.util.MyTags;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class BodyCount extends AbstractComboCard {
 
-    public static final String ID = DefaultMod.makeID(BodyCount.class.getSimpleName());
+    public static final String ID = BroMod.makeID(BodyCount.class.getSimpleName());
     public static final String IMG = makeCardPath("BodyCount.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -30,7 +31,7 @@ public class BodyCount extends AbstractComboCard {
     private static final CardRarity RARITY = CardRarity.COMMON; //
     private static final CardTarget TARGET = CardTarget.SELF;  //
     private static final CardType TYPE = CardType.POWER;       //
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_COMMON;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
@@ -54,11 +55,12 @@ public class BodyCount extends AbstractComboCard {
 
     public BodyCount() {
         super(ID,IMG,COST,TYPE,COLOR,RARITY,TARGET);
-    baseDamage = DAMAGE;
-    baseBlock = BLOCK;
-    baseMagicNumber = magicNumber = AMOUNT;
-    defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;
-    this.tags.add(MyTags.COMBO);
+        setModBackground(this);
+        baseDamage = DAMAGE;
+        baseBlock = BLOCK;
+        baseMagicNumber = magicNumber = AMOUNT;
+        defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;
+        this.tags.add(MyTags.COMBO);
 }
 
     @Override

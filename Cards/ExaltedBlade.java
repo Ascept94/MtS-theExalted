@@ -2,6 +2,7 @@ package Bromod.cards;
 
 
 
+import Bromod.BroMod;
 import Bromod.powers.ChromaticPower;
 import Bromod.powers.ExaltedPower;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -11,17 +12,17 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
 import Bromod.characters.TheExalted;
 
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class ExaltedBlade extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(ExaltedBlade.class.getSimpleName());
+    public static final String ID = BroMod.makeID(ExaltedBlade.class.getSimpleName());
     public static final String IMG = makeCardPath("ExaltedBlade.png");
 
     // /TEXT DECLARATION/

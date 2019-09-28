@@ -8,18 +8,19 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.powers.*;
 
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class SteelFiber extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(SteelFiber.class.getSimpleName());
+    public static final String ID = BroMod.makeID(SteelFiber.class.getSimpleName());
     public static final String IMG = makeCardPath("SteelFiber.png");
 
     // /TEXT DECLARATION/
@@ -29,8 +30,8 @@ public class SteelFiber extends AbstractDynamicCard {
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_COMMON;
+    private static final CardType TYPE = CardType.POWER;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -45,7 +46,7 @@ public class SteelFiber extends AbstractDynamicCard {
 
 
     public SteelFiber() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         this.baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;
     }

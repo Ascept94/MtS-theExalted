@@ -7,15 +7,16 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class VitalSense extends AbstractDynamicCard {
 
-    public static final String ID = DefaultMod.makeID(VitalSense.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = BroMod.makeID(VitalSense.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
     public static final String IMG = makeCardPath("VitalSense.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -29,7 +30,7 @@ public class VitalSense extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.RARE; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.ATTACK;       //
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_RARE;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -50,7 +51,7 @@ public class VitalSense extends AbstractDynamicCard {
 
 
     public VitalSense() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         baseDamage = DAMAGE;
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;

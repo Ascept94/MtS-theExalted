@@ -1,5 +1,6 @@
 package Bromod.cards;
 
+import Bromod.BroMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -7,15 +8,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class HornetStrike extends AbstractDynamicCard {
 
-    public static final String ID = DefaultMod.makeID(HornetStrike.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = BroMod.makeID(HornetStrike.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
     public static final String IMG = makeCardPath("HornetStrike.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -29,7 +30,7 @@ public class HornetStrike extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.ATTACK;       //
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_UNCOMMON;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final int COST = 2;
     private static final int UPGRADED_COST = 2;
@@ -50,7 +51,7 @@ public class HornetStrike extends AbstractDynamicCard {
 
 
     public HornetStrike() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         baseDamage = DAMAGE;
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;

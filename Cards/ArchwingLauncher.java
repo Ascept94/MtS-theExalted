@@ -2,6 +2,7 @@ package Bromod.cards;
 
 
 
+import Bromod.BroMod;
 import Bromod.powers.FlyPower;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,17 +10,17 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
 import Bromod.characters.TheExalted;
 
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class ArchwingLauncher extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(ArchwingLauncher.class.getSimpleName());
+    public static final String ID = BroMod.makeID(ArchwingLauncher.class.getSimpleName());
     public static final String IMG = makeCardPath("ArchwingLauncher.png");
 
     // /TEXT DECLARATION/

@@ -9,17 +9,18 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.characters.TheExalted;
 
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class FashionFrame extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(FashionFrame.class.getSimpleName());
+    public static final String ID = BroMod.makeID(FashionFrame.class.getSimpleName());
     public static final String IMG = makeCardPath("FashionFrame.png");
 
     // /TEXT DECLARATION/

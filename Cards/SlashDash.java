@@ -12,17 +12,18 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.characters.TheExalted;
 
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class SlashDash extends AbstractComboCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(SlashDash.class.getSimpleName());
+    public static final String ID = BroMod.makeID(SlashDash.class.getSimpleName());
     public static final String IMG = makeCardPath("SlashDashA.png");
 
     // /TEXT DECLARATION/

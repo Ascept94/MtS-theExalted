@@ -2,6 +2,7 @@ package Bromod.cards;
 
 
 
+import Bromod.BroMod;
 import Bromod.powers.BleedPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -11,18 +12,18 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class RendingStrike extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(RendingStrike.class.getSimpleName());
+    public static final String ID = BroMod.makeID(RendingStrike.class.getSimpleName());
     public static final String IMG = makeCardPath("RendingStrike.png");
 
     // /TEXT DECLARATION/
@@ -33,7 +34,7 @@ public class RendingStrike extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_RARE;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -52,7 +53,7 @@ public class RendingStrike extends AbstractDynamicCard {
 
 
     public RendingStrike() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         baseMagicNumber = magicNumber = AMOUNT;
         baseDamage = DAMAGE;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;

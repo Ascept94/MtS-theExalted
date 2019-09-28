@@ -11,11 +11,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class OrganShatter extends AbstractComboCard {
 
@@ -26,7 +27,7 @@ public class OrganShatter extends AbstractComboCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(OrganShatter.class.getSimpleName());
+    public static final String ID = BroMod.makeID(OrganShatter.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("OrganShatter.png");
@@ -44,7 +45,7 @@ public class OrganShatter extends AbstractComboCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_COMMON;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final int COST = 1;
     private int AMOUNT = 1;
@@ -54,7 +55,7 @@ public class OrganShatter extends AbstractComboCard {
     private int COMBO = 0;
 
     public OrganShatter() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = AMOUNT;
         this.tags.add(MyTags.COMBO);

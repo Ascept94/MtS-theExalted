@@ -1,14 +1,15 @@
 package Bromod.cards;
 
+import Bromod.BroMod;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
 import Bromod.characters.TheExalted;
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class Defend_Bro extends AbstractDynamicCard {
 
@@ -21,7 +22,7 @@ public class Defend_Bro extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(Defend_Bro.class.getSimpleName());
+    public static final String ID = BroMod.makeID(Defend_Bro.class.getSimpleName());
     public static final String IMG = makeCardPath("Block.png");
 
     // /TEXT DECLARATION/

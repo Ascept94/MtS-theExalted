@@ -1,12 +1,12 @@
 package Bromod.cards;
 
+import Bromod.BroMod;
 import Bromod.powers.ElectricityPower;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import Bromod.DefaultMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,11 +14,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 import java.util.ArrayList;
 
-import static Bromod.DefaultMod.makeCardPath;
+import static Bromod.BroMod.makeCardPath;
+import static Bromod.BroMod.setModBackground;
 
 public class FocusEnergy extends AbstractDynamicCard {
 
-    public static final String ID = DefaultMod.makeID(FocusEnergy.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = BroMod.makeID(FocusEnergy.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
     public static final String IMG = makeCardPath("FocusEnergy.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
@@ -32,7 +33,7 @@ public class FocusEnergy extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.RARE; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.SELF;  //   since they don't change much.
     private static final CardType TYPE = CardType.SKILL;       //
-    public static final CardColor COLOR = TheExalted.Enums.MOD_COLOR_RARE;
+    public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
     private static final int COST = 1;
     private static final int UPGRADED_COST = 1;
@@ -53,7 +54,7 @@ public class FocusEnergy extends AbstractDynamicCard {
 
 
     public FocusEnergy() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         baseDamage = DAMAGE;
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;
