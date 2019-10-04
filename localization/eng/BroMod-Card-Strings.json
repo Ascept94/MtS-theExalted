@@ -84,7 +84,7 @@
   },
   "Bromod:ArchwingLauncher": {
     "NAME": "Archwing Launcher",
-    "DESCRIPTION": "Gain !M! bromod:Flight.",
+    "DESCRIPTION": "Gain !M! bromod:Flight. NL You recover up to !M! bromod:Flight at the start of your turn.",
     "UPGRADE_DESCRIPTION":""
   },
   "Bromod:Forma": {
@@ -109,13 +109,14 @@
   },
   "Bromod:Vitality": {
     "NAME": "Vitality",
-    "DESCRIPTION": "Gain !M! temporary HP.",
+    "DESCRIPTION": "Gain !M! bromod:Temporary_HP.",
     "UPGRADE_DESCRIPTION":""
   },
   "Bromod:Redirection": {
     "NAME": "Redirection",
     "DESCRIPTION": "Next turn, gain block equal to !M! times your current block.",
-    "UPGRADE_DESCRIPTION":""
+    "UPGRADE_DESCRIPTION":"",
+    "EXTENDED_DESCRIPTION": [" NL You cannot gain block until the end of next turn."]
   },
   "Bromod:SteelFiber": {
     "NAME": "Steel Fiber",
@@ -195,14 +196,15 @@
   },
   "Bromod:OrganShatter": {
     "NAME": "Organ Shatter",
-    "DESCRIPTION": "bromod:Combo. NL Deal !D! Damage. Apply !Bromod:ComboMagic! Vulnerable. NL bromod:Combo affects this card's Vulnerable amount instead of damage.",
+    "DESCRIPTION": "bromod:Combo. NL Deal !D! Damage. NL Apply !Bromod:ComboMagic! Vulnerable. NL bromod:Combo affects this card's Vulnerable amount instead of damage.",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [" (Combo x", ")"]
   },
   "Bromod:Patagium": {
     "NAME": "Patagium",
     "DESCRIPTION": "Whenever you play an attack this turn, gain !M! bromod:Flight. NL This bromod:Flight is not conserved next turn.",
-    "UPGRADE_DESCRIPTION": ""
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": ["As long as you play an attack on your turn, you conserve !M! bromod:Flight. NL Exhaust"]
   },
   "Bromod:PointBlank": {
     "NAME": "Point Blank",
@@ -217,18 +219,20 @@
   },
   "Bromod:Provoked": {
     "NAME": "Provoked",
-    "DESCRIPTION": "Whenever you receive Vulnerable, gain the same amount of Strength.",
-    "UPGRADE_DESCRIPTION": ""
+    "DESCRIPTION": "Whenever you receive a debuff, gain 1 Strength.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": ["Whenever you receive a debuff from an enemy, gain 1 Strength."]
   },
   "Bromod:ReflexCoil": {
     "NAME": "Reflex Coil",
-    "DESCRIPTION": "Reduce the cost of al cards in your hand by 1 this turn.",
+    "DESCRIPTION": "Reduce the cost of all cards in your hand by 1 for this turn.",
     "UPGRADE_DESCRIPTION": ""
   },
   "Bromod:Rejuvenation": {
     "NAME": "Rejuvenation",
     "DESCRIPTION": "Gain !M! bromod:Regeneration.",
-    "UPGRADE_DESCRIPTION": ""
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": ["At the start of your turn, gain !Bromod:SecondMagic! bromod:Temporary_HP."]
   },
   "Bromod:RelentlessCombination": {
     "NAME": "Relentless Combination",
@@ -237,9 +241,9 @@
   },
   "Bromod:SeismicWave": {
     "NAME": "Seismic Wave",
-    "DESCRIPTION": "You can only use this card if you have bromod:Flight. Loose your bromod:Flight and deal !D! Damage to All enemies, plus !M! per stack of bromod:Flight.",
+    "DESCRIPTION": "Deal !D! damage, increased by !M! for each stack of bromod:Flight you have, to ALL enemies. NL Lose all yout bromod:Flight.",
     "UPGRADE_DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": ["You need #bFlight for this card to have any effect."]
+    "EXTENDED_DESCRIPTION": [" NL (Total of ", " damage)"]
   },
   "Bromod:Serration": {
     "NAME": "Serration",
@@ -258,7 +262,7 @@
   },
   "Bromod:SteelCharge": {
     "NAME": "Steel Charge",
-    "DESCRIPTION": "Gain 1 Strength for each !M! cards in your deck.",
+    "DESCRIPTION": "Gain 1 Strength for every !M! cards in your deck.",
     "UPGRADE_DESCRIPTION": ""
   },
   "Bromod:TacticalPump": {
@@ -328,8 +332,9 @@
   },
   "Bromod:ConditionOverload": {
     "NAME": "Condition Overload",
-    "DESCRIPTION": "Deal !D! Damage and apply for each power the enemy has. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": ""
+    "DESCRIPTION": "Deal !D! Damage for each power the enemy has. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": ["Deal !M! Damage for each power the enemy has. This card's damage cannot be modified. NL Exhaust."]
   },
   "Bromod:Continuity": {
     "NAME": "Continuity",
@@ -343,8 +348,8 @@
   },
   "Bromod:Flow": {
     "NAME": "Flow",
-    "DESCRIPTION": "Gain [E] [E]",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E] NL Next turn, gain [E] [E]"
+    "DESCRIPTION": "Gain [E]",
+    "UPGRADE_DESCRIPTION": "Gain [E] NL Next turn, gain [E]"
   },
   "Bromod:HellsChamber": {
     "NAME": "Hell's Chamber",
@@ -368,7 +373,7 @@
   },
   "Bromod:QuickThinking": {
     "NAME": "Quick Thinking",
-    "DESCRIPTION": "At the end of your turn, gain !M! temporary HP for each unspent [E]  you have.",
+    "DESCRIPTION": "At the end of your turn, gain !M! bromod:Temporary_HP for each unspent [E]  you have.",
     "UPGRADE_DESCRIPTION": ""
   },
   "Bromod:Rage": {

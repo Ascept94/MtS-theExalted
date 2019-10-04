@@ -38,12 +38,12 @@
   "Bromod:ColdPower": {
           "NAME": "Cold",
           "DESCRIPTIONS":
-          ["Your attacks have a #b", "% chance of applying Slow to the target of the attack. (Can combine with other elements for new effects)"]
+          ["Your attacks have a #b", "% chance of applying #b"," Slow to the target of the attack. (Can combine with other elements for new effects)"]
   },
   "Bromod:BlastPower": {
           "NAME": "Blast",
           "DESCRIPTIONS":
-          ["Your attacks have a #b", "% chance of dealing 5 bonus damage to ALL enemies. ( [#a6ffff]Cold[] + #rHeat )"]
+          ["Your attacks have a #b", "% chance of dealing 5 bonus damage to ALL enemies. NL ( [#a6ffff]Cold[] + #rHeat )", " NL Can happen only once per attack."]
   },
   "Bromod:HeatPower": {
           "NAME": "Heat",
@@ -55,6 +55,11 @@
           "DESCRIPTIONS":
           ["At the end of turn, receive #b", " damage #b", " times"]
   },
+  "Bromod:nerfBurnPower": {
+    "NAME": "Burn",
+    "DESCRIPTIONS":
+    ["At the end of turn, receive #b", " damage #b", " times"]
+  },
   "Bromod:ElectricityPower": {
           "NAME": "Electricity",
           "DESCRIPTIONS":
@@ -63,42 +68,42 @@
   "Bromod:ToxinPower": {
           "NAME": "Toxin",
           "DESCRIPTIONS":
-          ["Your attacks have a #b", "% chance of applying #b2 #gPoison to the target of the attack (Can combine with other elements for new effects)."]
+          ["Your attacks have a #b", "% chance of applying #b"," #gPoison to the target of the attack (Can combine with other elements for new effects)."]
   },
   "Bromod:ViralPower": {
           "NAME": "Viral",
           "DESCRIPTIONS":
-          ["Your attacks have a #b", "% chance of reducing the HP of the target of the attack by #b10% of it's current HP ( [#a6ffff]Cold[] + #gToxin )."]
+          ["Your attacks have a #b", "% chance of reducing the HP of the target of the attack by #b10% of it's current HP. NL  ( [#a6ffff]Cold[] + #gToxin ).", " NL Capped at #b", " damage."]
   },
   "Bromod:MagneticPower": {
           "NAME": "Magnetic",
           "DESCRIPTIONS":
-          ["Your attacks have a #b", "% chance of reducing one buff from the target of the attack by 1 ( [#a6ffff]Cold[] + #bElectricity )."]
+          ["Your attacks have a #b", "% chance of reducing one buff from the target of the attack by 1. NL  ( [#a6ffff]Cold[] + #bElectricity )."]
   },
   "Bromod:RadiationPower": {
           "NAME": "Radiation",
           "DESCRIPTIONS":
-          ["Your attacks have a #b", "% chance of #yirradiating the target of the attack, causing it to deal damage to a random enemy on attack ( #rHeat + #bElectricity )."]
+          ["Your attacks have a #b", "% chance of #yirradiating the target of the attack, causing it to deal damage to a random enemy on attack. NL ( #rHeat + #bElectricity )."]
   },
   "Bromod:IrradiatedPower": {
           "NAME": "Irradiated",
           "DESCRIPTIONS":
-          ["This monster will deal #b", " damage to a random enemy on attack.", "This monster does not intent to attack"]
+          ["This monster will deal #b", " damage to a random enemy on attack.", "This monster does not intent to attack", " #b1 #yIrradiation is lost each turn.", " #b1 #yIrradiation is lost per attack."]
   },
   "Bromod:CorrosivePower": {
           "NAME": "Corrosive",
           "DESCRIPTIONS":
-          ["Your attacks have a #b", "% chance of removing all #bblock from the target of the attack and making it #yvulnerable. ( #gToxin + #bElectricity )."]
+          ["Your attacks have a #b", "% chance of removing all #bblock from the target of the attack and making it #yvulnerable. NL ( #gToxin + #bElectricity )."]
   },
   "Bromod:GasPower": {
           "NAME": "Gas",
           "DESCRIPTIONS":
-          ["Your attacks have a #b", "% chance of #gintoxicating the target of the attack, causing it to lose HP each turn and spread #gpoison to all enemies ( #rHeat + #gToxin )."]
+          ["Your attacks have a #b", "% chance of #gintoxicating the target of the attack, causing it to lose HP each turn and spread #gpoison to all enemies. NL ( #rHeat + #gToxin )."]
   },
   "Bromod:IntoxicationPower": {
           "NAME": "Intoxication",
           "DESCRIPTIONS":
-          ["This monster will receive #b", " damage and apply #b", " #gpoison to all enemies on it's turn"]
+          ["This monster will receive #b", " damage and apply #b", " #gpoison to all enemies on it's turn", ", then reduce #yIntoxication by #b1.", ", then remove #yIntoxication."]
   },
   "Bromod:SlashPower": {
           "NAME": "Slash",
@@ -118,15 +123,17 @@
   "Bromod:BleedPower": {
     "NAME": "Bleed",
     "DESCRIPTIONS":
-    ["This monster will lose #b", " HP on it's turn. ( #b", "% of it's max HP)"]
+    ["This monster will lose #b", " HP on it's turn. ( #b", "% of it's max HP, minumum #b1 ).", " Then, Reduce #yBleed by #b1."]
   },
   "Bromod:FlyPower": {
           "NAME": "Flight",
           "DESCRIPTIONS": [
-                  "Receives 50% less attack damage. Cancelled if dealt attack damage #b",
-                  "Receives 50% less attack damage. Cancelled if dealt attack damage once this turn. Your flight recovers up to #b",
-                  " times this turn. Your flight recovers up to #b",
-                  " at the start of your turn."
+                  "Receives #b50% less attack damage. Lost upon receiving damage.",
+                  "Receives #b50% less attack damage. Lost upon receiving damage #b",
+                  " times this turn.",
+                  " NL Lose your #yFlight",
+                  " NL Your #yFlight becomes #b",
+                  " at the start of your next turn."
           ]
   },
   "Bromod:ExaltedPower": {
@@ -152,7 +159,7 @@
   "Bromod:ReflectionPower": {
           "NAME": "Reflection",
           "DESCRIPTIONS":
-          ["The next time you receive damage this turn, deal that same amount of damage back to the attacker.", "The first ", " times you receive damage this turn, deal that same amount of damage back to the attacker."]
+          ["The next time you receive damage, deal that same amount of damage back to the attacker.", "The first ", " times you receive damage this turn, deal that same amount of damage back to the attacker.", " At the start of your turn, #yReflection is lost."]
   },
   "Bromod:BloodRushPower": {
     "NAME": "Blood Rush",
@@ -167,7 +174,7 @@
   "Bromod:PatagiumPower": {
           "NAME": "Patagium",
           "DESCRIPTIONS":
-          ["Whenever you play an attack this turn, gain #b", " #yFlight."]
+          ["Whenever you play an attack this turn, gain #b", " #yFlight.", "As long as you play an attack this turn, you retain #b", " #yFlight."]
   },
   "Bromod:PointStrikePower": {
           "NAME": "Aiming",
@@ -212,7 +219,7 @@
   "Bromod:HellsChamberPower": {
     "NAME": "Hell's Chamber",
     "DESCRIPTIONS":
-    ["All attacks (Except Basic Strikes) cost 0 and are #yExhausted on use."]
+    ["#yAttacks cost #b0. When you play an #yAttack (except Basic Strikes), #yExhaust it."]
   },
   "Bromod:IntensifyPower": {
     "NAME": "Intensify",
@@ -250,5 +257,10 @@
       "Cephalon Ordis has completed a build. Check the foundry.",
       "Foundry items can be claimed, Operator. Are you pleased?",
       "Items in the foundry are being build. Next turn, add #b", " random card to your hand.", " random cards to your hand."]
+  },
+  "Bromod:TempRegenPower": {
+    "NAME": "Temp. Regen",
+    "DESCRIPTIONS":
+    ["At the end of your turn, gain #b" , " #yTemporary #yHP."]
   }
 }

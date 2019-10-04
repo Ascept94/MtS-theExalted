@@ -35,7 +35,16 @@
     "NAME": "Broken Cephalon",
     "FLAVOR": "Let me help you - CLEAN THIS MESS - organize your mod library, operator.",
     "DESCRIPTIONS": [
-      "When you draw a #bPower card, draw an additional card."
+      "When you draw a #bPower card, draw an additional card.",
+      "At the start of combat and whenever you shuffle your deck, draw a card."
+    ]
+  },
+  "Bromod:AscarisDevice": {
+    "NAME": "Ascaris Device",
+    "FLAVOR": "You are my prize now, Tenno.",
+    "DESCRIPTIONS": [
+      "The Ascaris is limiting the powers of your warframe. You can remove it by right-cliking this relic #g(Enables #geasy #gmode).",
+      "The Ascaris has been removed and your powers returned. Card and power effects have been restored to their strongest versions."
     ]
   }
 }

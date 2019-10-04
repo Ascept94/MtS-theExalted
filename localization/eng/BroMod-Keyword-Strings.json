@@ -108,7 +108,7 @@
       "flight",
       "fly"
     ],
-    "DESCRIPTION": "Receive 50% less attack damage. Decreases when hit, but it's recovered at the start of the turn if it's not zero."
+    "DESCRIPTION": "Receive 50% less attack damage. Decreases when hit."
   },
   {
     "PROPER_NAME": "Chromatic Blade",
@@ -130,7 +130,7 @@
     "NAMES": [
       "reflection"
     ],
-    "DESCRIPTION": "When you receive damage, deal that same amount of damage to the attacker and lose 1 #yReflection. At the start of your turn, #yReflection is lost."
+    "DESCRIPTION": "When you receive damage, deal that same amount of damage to the attacker and lose 1 #yReflection."
   },
   {
     "PROPER_NAME": "Regeneration",
@@ -145,5 +145,13 @@
       "elemental"
     ],
     "DESCRIPTION": "Gain either [#a6ffff]Cold[], #rHeat, #bElectricity or #gToxin at random."
+  },
+  {
+    "PROPER_NAME": "Temporary HP",
+    "NAMES": [
+      "temporary hp",
+      "temporary_hp"
+    ],
+    "DESCRIPTION": "Prevents damage. Unlike #yBlock, it's not lost between turns."
   }
 ]
