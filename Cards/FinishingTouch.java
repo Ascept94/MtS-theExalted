@@ -36,8 +36,8 @@ public class FinishingTouch extends AbstractComboCard {
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
-    private static final int COST = 4;
-    private static final int UPGRADED_COST = 3;
+    private static final int COST = 2;
+    private static final int UPGRADED_COST = 1;
 
     private static final int DAMAGE = 2;
     private static final int UPGRADE_PLUS_DMG = 2;
@@ -86,14 +86,18 @@ public class FinishingTouch extends AbstractComboCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.diff = this.damage - this.baseDamage;
-        if (diff > 0){
-            this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + diff;
+        this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + diff;
+        AbstractGameAction.AttackEffect effect = AbstractGameAction.AttackEffect.NONE;
+
+        switch (this.ComboCounter){
+            case 0: effect = AbstractGameAction.AttackEffect.BLUNT_LIGHT; break;
+            case 1: effect = AbstractGameAction.AttackEffect.BLUNT_LIGHT; break;
+            case 2: effect = AbstractGameAction.AttackEffect.BLUNT_HEAVY; break;
+            case 3: effect = AbstractGameAction.AttackEffect.SMASH; break;
+            default: AbstractDungeon.actionManager.addToBottom(new VFXAction(new ViceCrushEffect(m.drawX, m.drawY),0.4f)); break;
         }
-        else{
-            this.ComboDamage = this.damage*(int)Math.pow(2,this.ComboCounter);
-        }
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new ViceCrushEffect(m.drawX, m.drawY),0.4f));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.ComboDamage, damageTypeForTurn),AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.ComboDamage, damageTypeForTurn),effect));
         this.COMBO = 0;
         this.ComboCounter = this.COMBO;
         this.rawDescription = this.DESCRIPTION;

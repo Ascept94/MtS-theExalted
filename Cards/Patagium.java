@@ -2,6 +2,7 @@ package Bromod.cards;
 
 import Bromod.BroMod;
 import Bromod.powers.PatagiumPower;
+import Bromod.util.MyTags;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -24,6 +25,8 @@ public class Patagium extends AbstractDynamicCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON; //  Up to you, I like auto-complete on these
@@ -55,6 +58,9 @@ public class Patagium extends AbstractDynamicCard {
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;
+        this.tags.add(MyTags.NERF);
+        this.rawDescription = TheExalted.hasAscaris()? this.EXTENDED_DESCRIPTION[0] : this.DESCRIPTION;
+        this.exhaust = TheExalted.hasAscaris()? true:false;
     }
 
 
@@ -78,5 +84,13 @@ public class Patagium extends AbstractDynamicCard {
             //this.rawDescription = this.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        this.rawDescription = TheExalted.hasAscaris()? this.EXTENDED_DESCRIPTION[0] : this.DESCRIPTION;
+        this.exhaust = TheExalted.hasAscaris()? true:false;
+        initializeDescription();
     }
 }

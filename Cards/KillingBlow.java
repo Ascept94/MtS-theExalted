@@ -2,6 +2,7 @@ package Bromod.cards;
 
 import Bromod.actions.KillingBlowAction;
 import Bromod.util.MyTags;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -11,6 +12,7 @@ import Bromod.BroMod;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 
 import static Bromod.BroMod.makeCardPath;
 import static Bromod.BroMod.setModBackground;
@@ -37,12 +39,12 @@ public class KillingBlow extends AbstractComboCard {
     private static final int UPGRADED_COST = 4;
 
     private static final int DAMAGE = 9;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int UPGRADE_PLUS_DMG = 2;
 
     private static final int BLOCK = 0;
     private static final int UPGRADE_PLUS_BLOCK = 0;
 
-    private static final int AMOUNT = 0;
+    private static final int AMOUNT = 8;
     private static final int UPGRADE_PLUS_AMOUNT = 0;
 
     private static final int SECOND_AMOUNT = 0;
@@ -55,7 +57,12 @@ public class KillingBlow extends AbstractComboCard {
 
     public KillingBlow() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
-        baseDamage = DAMAGE;
+        if (TheExalted.hasAscaris()){
+            baseDamage = damage = AMOUNT;
+        }
+        else {
+            baseDamage = damage = DAMAGE;
+        }
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;
@@ -89,12 +96,9 @@ public class KillingBlow extends AbstractComboCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.diff = this.damage - this.baseDamage;
-        if (diff > 0){
-            this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + diff;
-        }
-        else{
-            this.ComboDamage = this.damage*(int)Math.pow(2,this.ComboCounter);
-        }
+        this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + diff;
+
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new WeightyImpactEffect(m.drawX, m.drawY),0.4f));
         AbstractDungeon.actionManager.addToBottom(new KillingBlowAction(m, new DamageInfo(p, this.ComboDamage, damageTypeForTurn),this.costForTurn,this));
         this.COMBO = 0;
         this.ComboCounter = this.COMBO;
@@ -116,5 +120,17 @@ public class KillingBlow extends AbstractComboCard {
             //this.rawDescription = this.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+    @Override
+    public void update() {
+        super.update();
+        if (TheExalted.hasAscaris()){
+            baseDamage = AMOUNT;
+        }
+        else {
+            baseDamage = DAMAGE;
+        }
+        if (upgraded){baseDamage += UPGRADE_PLUS_DMG;}
+        initializeDescription();
     }
 }

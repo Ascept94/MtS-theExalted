@@ -72,7 +72,7 @@ public class Frostbite extends AbstractDynamicCard {
         DamageInfo dmgInfo = new DamageInfo(AbstractDungeon.player, dmg, DamageInfo.DamageType.NORMAL);
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, dmgInfo, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         if (upgraded){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new ColdPower(p,p,magicNumber,false),magicNumber));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new ColdPower(p,p,defaultBaseSecondMagicNumber,false),defaultBaseSecondMagicNumber));
         }
     }
 

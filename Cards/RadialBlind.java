@@ -52,6 +52,7 @@ public class RadialBlind extends AbstractDynamicCard {
         this.baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;
+        this.isMultiDamage = true;
     }
 
     // Actions the card should do

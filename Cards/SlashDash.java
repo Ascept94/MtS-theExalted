@@ -81,12 +81,8 @@ public class SlashDash extends AbstractComboCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.diff = this.damage - this.baseDamage;
-        if (diff > 0){
-            this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + diff;
-        }
-        else{
-            this.ComboDamage = this.damage*(int)Math.pow(2,this.ComboCounter);
-        }
+        this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + diff;
+
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.ComboDamage, damageTypeForTurn),AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         this.COMBO = 0;
         this.ComboCounter = this.COMBO;

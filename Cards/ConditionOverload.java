@@ -25,6 +25,8 @@ public class ConditionOverload extends AbstractDynamicCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE; //  Up to you, I like auto-complete on these
@@ -36,13 +38,13 @@ public class ConditionOverload extends AbstractDynamicCard {
     private static final int UPGRADED_COST = 2;
 
     private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DMG = 5;
+    private static final int UPGRADE_PLUS_DMG = 4;
 
     private static final int BLOCK = 0;
     private static final int UPGRADE_PLUS_BLOCK = 0;
 
-    private static final int AMOUNT = 0;
-    private static final int UPGRADE_PLUS_AMOUNT = 0;
+    private static final int AMOUNT = 10;
+    private static final int UPGRADE_PLUS_AMOUNT = 14;
 
     private static final int SECOND_AMOUNT = 0;
     private static final int UPGRADE_SECOND_AMOUNT = 0;
@@ -57,6 +59,7 @@ public class ConditionOverload extends AbstractDynamicCard {
         baseMagicNumber = magicNumber = AMOUNT;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;
         this.exhaust = true;
+        this.rawDescription = TheExalted.hasAscaris()? this.EXTENDED_DESCRIPTION[0] : this.DESCRIPTION;
     }
 
 
@@ -64,8 +67,9 @@ public class ConditionOverload extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int i;
+        int dmg = TheExalted.hasAscaris() ? this.magicNumber:this.damage;
         for (i=0; i<m.powers.size();i++)
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p,this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p,dmg, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
     }
 
 
@@ -82,5 +86,11 @@ public class ConditionOverload extends AbstractDynamicCard {
             //this.rawDescription = this.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+    @Override
+    public void update() {
+        super.update();
+        this.rawDescription = TheExalted.hasAscaris()? this.EXTENDED_DESCRIPTION[0] : this.DESCRIPTION;
+        initializeDescription();
     }
 }

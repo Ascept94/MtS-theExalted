@@ -3,6 +3,7 @@ package Bromod.cards;
 import Bromod.BroMod;
 import Bromod.powers.BurnPower;
 import Bromod.powers.HeatPower;
+import Bromod.powers.nerfBurnPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import Bromod.characters.TheExalted;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static Bromod.BroMod.makeCardPath;
 import static Bromod.BroMod.setModBackground;
@@ -65,11 +67,12 @@ public class ThermiteRounds extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractPower powerToApply = TheExalted.hasAscaris() ?new nerfBurnPower(m,m,1) : new BurnPower(m,m,1);
         int i;
         DamageInfo dmgInfo = new DamageInfo(AbstractDungeon.player, this.damage, DamageInfo.DamageType.NORMAL);
         for (i=0; i<3;i++){
             AbstractDungeon.actionManager.addToBottom(new DamageAction(m, dmgInfo, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p,new BurnPower(m,p,1),1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p,powerToApply, 1));
         }
 
         if (upgraded){

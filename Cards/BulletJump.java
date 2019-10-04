@@ -57,8 +57,12 @@ public class BulletJump extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p,p,this.block));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new FlyPower(p,p,1,1),1));
-
+        if (TheExalted.hasAscaris()){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new FlyPower(p,p,1,0, 0),1));
+        }
+        else{
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new FlyPower(p,p,1,1, 0),1));
+        }
     }
 
     //Upgraded stats.

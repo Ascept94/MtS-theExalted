@@ -39,6 +39,7 @@ public class SteelFiber extends AbstractDynamicCard {
     private static final int COST = 1;
     private int AMOUNT = 3;
     private int UPGRADE_AMOUNT = 2;
+    private int SECOND_AMOUNT = 2;
     private static final int BLOCK = 4;
     private static final int UPGRADE_PLUS_BLOCK = 4;
 
@@ -48,7 +49,12 @@ public class SteelFiber extends AbstractDynamicCard {
     public SteelFiber() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         this.baseBlock = BLOCK;
-        baseMagicNumber = magicNumber = AMOUNT;
+        if (TheExalted.hasAscaris()){
+            baseMagicNumber = magicNumber = SECOND_AMOUNT;
+        }
+        else {
+            baseMagicNumber = magicNumber = AMOUNT;
+        }
     }
 
     // Actions the card should do
@@ -69,5 +75,16 @@ public class SteelFiber extends AbstractDynamicCard {
         }
     }
 
-
+    @Override
+    public void update() {
+        super.update();
+        if (TheExalted.hasAscaris()){
+            baseMagicNumber = SECOND_AMOUNT;
+        }
+        else {
+            baseMagicNumber =  AMOUNT;
+        }
+        if (upgraded){baseMagicNumber += UPGRADE_AMOUNT; magicNumber = baseMagicNumber;}
+        initializeDescription();
+    }
 }

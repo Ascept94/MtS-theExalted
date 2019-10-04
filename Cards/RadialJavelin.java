@@ -58,6 +58,7 @@ public class RadialJavelin extends AbstractDynamicCard {
         baseMagicNumber = magicNumber = AMOUNT;
         baseDamage = DAMAGE;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;
+        this.isMultiDamage = true;
     }
 
     // Actions the card should do

@@ -44,8 +44,8 @@ public class PointBlank extends AbstractDynamicCard {
     private static final int BLOCK = 0;
     private static final int UPGRADE_PLUS_BLOCK = 0;
 
-    private static final int AMOUNT = 0;
-    private static final int UPGRADE_PLUS_AMOUNT = 0;
+    private static final int AMOUNT = 8;
+    private static final int UPGRADE_PLUS_AMOUNT = 2;
 
     private static final int SECOND_AMOUNT = 0;
     private static final int UPGRADE_SECOND_AMOUNT = 0;
@@ -58,11 +58,17 @@ public class PointBlank extends AbstractDynamicCard {
 
     public PointBlank() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
-        baseDamage = DAMAGE;
+        if (TheExalted.hasAscaris()){
+            baseDamage = damage = AMOUNT;
+        }
+        else {
+            baseDamage = damage = DAMAGE;
+        }
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;
         this.exhaust = true;
+        this.isMultiDamage = true;
     }
 
     @Override
@@ -128,5 +134,17 @@ public class PointBlank extends AbstractDynamicCard {
             //this.rawDescription = this.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        if (TheExalted.hasAscaris()){
+            baseDamage = upgraded? AMOUNT + UPGRADE_PLUS_AMOUNT: AMOUNT;
+        }
+        else {
+            baseDamage = upgraded? DAMAGE + UPGRADE_PLUS_DMG: DAMAGE;
+        }
+        initializeDescription();
     }
 }

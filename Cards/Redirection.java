@@ -3,6 +3,7 @@ package Bromod.cards;
 
 
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.colorless.PanicButton;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -36,6 +37,9 @@ public class Redirection extends AbstractDynamicCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+
+
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
     private int AMOUNT = 2;
@@ -50,6 +54,7 @@ public class Redirection extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET); setModBackground(this);
         this.baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;
+        this.rawDescription = TheExalted.hasAscaris()? this.DESCRIPTION + this.EXTENDED_DESCRIPTION[0] : this.DESCRIPTION;
     }
 
     // Actions the card should do
@@ -58,6 +63,10 @@ public class Redirection extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         int BlockNextTurn = p.currentBlock * this.magicNumber;
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new NextTurnBlockPower(p, BlockNextTurn), BlockNextTurn));
+        // THINK ABOUT THIS!
+        if (TheExalted.hasAscaris()){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new NoBlockPower(p,2,false),1));
+        }
     }
 
     //Upgraded stats.
@@ -72,5 +81,10 @@ public class Redirection extends AbstractDynamicCard {
         }
     }
 
-
+    @Override
+    public void update() {
+        super.update();
+        this.rawDescription = TheExalted.hasAscaris()? this.DESCRIPTION + this.EXTENDED_DESCRIPTION[0] : this.DESCRIPTION;
+        initializeDescription();
+    }
 }

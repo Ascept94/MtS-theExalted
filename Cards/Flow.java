@@ -40,7 +40,7 @@ public class Flow extends AbstractDynamicCard {
     private static final int BLOCK = 0;
     private static final int UPGRADE_PLUS_BLOCK = 0;
 
-    private static final int AMOUNT = 2;
+    private static final int AMOUNT = 1;
     private static final int UPGRADE_PLUS_AMOUNT = 0;
 
     private static final int SECOND_AMOUNT = 0;

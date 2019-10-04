@@ -39,20 +39,26 @@ public class ArchwingLauncher extends AbstractDynamicCard {
     private static final int COST = 2;
     private static final int UPGRADE_COST = 1;
     private int AMOUNT = 3;
+    private int SECOND_AMOUNT = 2;
 
     // /STAT DECLARATION/
 
 
     public ArchwingLauncher() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseMagicNumber = magicNumber = AMOUNT;
+        if (TheExalted.hasAscaris()){
+            baseMagicNumber = magicNumber = SECOND_AMOUNT;
+        }
+        else {
+            baseMagicNumber = magicNumber = AMOUNT;
+        }
     }
 
     // Actions the card should do
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new FlyPower(p,p,magicNumber,magicNumber),magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p,p, new FlyPower(p,p,magicNumber,0,magicNumber),magicNumber));
 
     }
 
@@ -66,5 +72,15 @@ public class ArchwingLauncher extends AbstractDynamicCard {
         }
     }
 
-
+    @Override
+    public void update() {
+        super.update();
+        if (TheExalted.hasAscaris()){
+            baseMagicNumber = magicNumber = SECOND_AMOUNT;
+        }
+        else {
+            baseMagicNumber = magicNumber = AMOUNT;
+        }
+        initializeDescription();
+    }
 }

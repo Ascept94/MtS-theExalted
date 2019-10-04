@@ -24,6 +24,7 @@ public class Provoked extends AbstractDynamicCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON; //  Up to you, I like auto-complete on these
@@ -55,6 +56,7 @@ public class Provoked extends AbstractDynamicCard {
         baseBlock = BLOCK;
         baseMagicNumber = magicNumber = AMOUNT;
         defaultBaseSecondMagicNumber = defaultSecondMagicNumber = SECOND_AMOUNT;
+        this.rawDescription = TheExalted.hasAscaris()? this.EXTENDED_DESCRIPTION[0] : this.DESCRIPTION;
     }
 
 
@@ -78,5 +80,11 @@ public class Provoked extends AbstractDynamicCard {
             //this.rawDescription = this.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
+    }
+    @Override
+    public void update() {
+        super.update();
+        this.rawDescription = TheExalted.hasAscaris()? this.EXTENDED_DESCRIPTION[0] : this.DESCRIPTION;
+        initializeDescription();
     }
 }

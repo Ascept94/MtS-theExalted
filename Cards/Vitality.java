@@ -54,8 +54,7 @@ public class Vitality extends AbstractDynamicCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int HP = p.maxHealth * this.magicNumber / 100;
-        AbstractDungeon.actionManager.addToBottom(new AddTemporaryHPAction(p,p, HP));
+        AbstractDungeon.actionManager.addToBottom(new AddTemporaryHPAction(p,p, magicNumber));
 
     }
 

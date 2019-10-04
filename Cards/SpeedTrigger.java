@@ -1,5 +1,6 @@
 package Bromod.cards;
 
+import Bromod.actions.SpeedTriggerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -63,7 +64,7 @@ public class SpeedTrigger extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         int i;
         for (i=0; i < magicNumber; i++){
-            AbstractDungeon.actionManager.addToBottom(new PlayTopCardAction(AbstractDungeon.getCurrRoom().monsters.getRandomMonster((AbstractMonster)null, true, AbstractDungeon.cardRandomRng), false));
+            AbstractDungeon.actionManager.addToBottom(new SpeedTriggerAction());
         }
     }
 
