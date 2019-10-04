@@ -47,14 +47,7 @@ public class ImpactPower extends AbstractPower implements CloneablePowerInterfac
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
-        int CHANCE = amount*100;
-        while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(owner, owner, 3));
-            CHANCE -= 100;
-        }
-        if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(owner, owner, 3));
-        }
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(owner, owner, amount*3));
     }
 
 

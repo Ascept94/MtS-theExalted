@@ -1,5 +1,6 @@
 package Bromod.relics;
 
+import Bromod.BroMod;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
@@ -11,11 +12,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
-import Bromod.DefaultMod;
 import Bromod.util.TextureLoader;
 
-import static Bromod.DefaultMod.makeRelicOutlinePath;
-import static Bromod.DefaultMod.makeRelicPath;
+import static Bromod.BroMod.makeRelicOutlinePath;
+import static Bromod.BroMod.makeRelicPath;
 
 public class DefaultClickableRelic extends CustomRelic implements ClickableRelic { // You must implement things you want to use from StSlib
     /*
@@ -26,7 +26,7 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("DefaultClickableRelic");
+    public static final String ID = BroMod.makeID("DefaultClickableRelic");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("default_clickable_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("default_clickable_relic.png"));

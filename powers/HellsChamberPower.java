@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -30,7 +31,7 @@ public class HellsChamberPower extends AbstractPower implements CloneablePowerIn
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("HellsChamberPower84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("HellsChamberPower32.png"));
     // The Name requires to be of the form: NamePower
-
+    private static int handSize = 0;
 
     public HellsChamberPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
@@ -51,6 +52,19 @@ public class HellsChamberPower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
+    public void update(int slot) {
+        super.update(slot);
+        if (handSize != AbstractDungeon.player.hand.group.size()) {
+            handSize =AbstractDungeon.player.hand.group.size();
+            for (AbstractCard c : AbstractDungeon.player.hand.group){
+                if (c.type == AbstractCard.CardType.ATTACK) {
+                    c.setCostForTurn(-99);
+                }
+            }
+        }
+    }
+/*
+    @Override
     public void onInitialApplication() {
         for (AbstractCard c : AbstractDungeon.player.hand.group){
             if (c.type == AbstractCard.CardType.ATTACK) {
@@ -65,6 +79,8 @@ public class HellsChamberPower extends AbstractPower implements CloneablePowerIn
             card.setCostForTurn(-99);
         }
     }
+*/
+
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {

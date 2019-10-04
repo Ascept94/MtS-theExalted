@@ -1,12 +1,15 @@
 package Bromod.powers;
 
 import Bromod.BroMod;
+import Bromod.characters.TheExalted;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -26,6 +29,8 @@ public class BlastPower extends AbstractPower implements CloneablePowerInterface
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     private static final Texture tex84 = TextureLoader.getTexture("BromodResources/images/powers/BlastPower84.png");
     private static final Texture tex32 = TextureLoader.getTexture("BromodResources/images/powers/BlastPower32.png");
+
+    private static boolean Happened = false;
 
     public BlastPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
@@ -48,7 +53,7 @@ public class BlastPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (info.type != DamageInfo.DamageType.NORMAL){return;}
+        if (info.type != DamageInfo.DamageType.NORMAL || Happened){return;}
         int CHANCE = amount*10;
         int monstercount = AbstractDungeon.getCurrRoom().monsters.monsters.size();
         int[] multidamage = new int[monstercount];
@@ -70,11 +75,18 @@ public class BlastPower extends AbstractPower implements CloneablePowerInterface
             DamageInfo dmgInfo = new DamageInfo(info.owner,damage, DamageInfo.DamageType.THORNS);
             AbstractDungeon.actionManager.addToBottom(new DamageAction(info.owner,dmgInfo, AbstractGameAction.AttackEffect.FIRE));
         }
+        Happened = true;
+    }
+
+    @Override
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+        Happened = false;
     }
 
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + (amount*10) + DESCRIPTIONS[1];
+        description = TheExalted.hasAscaris() ? description + DESCRIPTIONS[2] : description;
     }
 
     @Override

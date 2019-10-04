@@ -54,7 +54,7 @@ public class AdaptationPower extends AbstractPower implements CloneablePowerInte
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         for (AbstractCreature mo: AbstractDungeon.getCurrRoom().monsters.monsters){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo,AbstractDungeon.player, new StrengthPower(mo,-amount), -amount,true));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(mo,AbstractDungeon.player, new StrengthPower(mo,-amount), -amount,true));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo,AbstractDungeon.player, new GainStrengthPower(mo, amount),amount, true));
         }
         return damageAmount;

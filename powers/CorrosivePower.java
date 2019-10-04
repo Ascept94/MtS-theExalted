@@ -51,15 +51,17 @@ public class CorrosivePower extends AbstractPower implements CloneablePowerInter
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
         int CHANCE = amount*10;
+        int vulnAmt = 0;
         while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(target, info.owner));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new VulnerablePower(target,1,false)));
+            vulnAmt++;
             CHANCE -= 100;
         }
         if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(target, info.owner));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new VulnerablePower(target,1,false)));
+            vulnAmt++;
         }
+        if (vulnAmt==0){return;}
+        AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(target, info.owner));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new VulnerablePower(target,vulnAmt,false)));
     }
 
 

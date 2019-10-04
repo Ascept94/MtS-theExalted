@@ -1,15 +1,16 @@
 package Bromod.relics;
 
+import Bromod.characters.TheExalted;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import Bromod.DefaultMod;
+import Bromod.BroMod;
 import Bromod.util.TextureLoader;
 
-import static Bromod.DefaultMod.makeRelicOutlinePath;
-import static Bromod.DefaultMod.makeRelicPath;
+import static Bromod.BroMod.makeRelicOutlinePath;
+import static Bromod.BroMod.makeRelicPath;
 
 public class Ordis extends CustomRelic {
 
@@ -20,7 +21,7 @@ public class Ordis extends CustomRelic {
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("Ordis");
+    public static final String ID = BroMod.makeID("Ordis");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("Ordis.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("Ordis.png"));
@@ -31,20 +32,32 @@ public class Ordis extends CustomRelic {
 
     // Flash at the start of Battle.
 
-
+/*
     @Override
     public void onCardDraw(AbstractCard drawnCard) {
-        if (drawnCard.type == AbstractCard.CardType.POWER){
+        if (drawnCard.type == AbstractCard.CardType.POWER && !TheExalted.hasAscaris()){
             flash();
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player,1));
         }
     }
+*/
 
+    @Override
+    public void atBattleStart() {
+        flash();
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player,1));
+    }
+
+    @Override
+    public void onShuffle() {
+        flash();
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player,1));
+    }
 
     // Description
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0];
+        return DESCRIPTIONS[1];
     }
 
 }

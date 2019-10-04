@@ -49,13 +49,16 @@ public class GasPower extends AbstractPower implements CloneablePowerInterface {
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
         int CHANCE = amount*10;
+        int gasAmt = 0;
         while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new IntoxicationPower(target,info.owner,1)));
+            gasAmt++;
             CHANCE -= 100;
         }
         if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new IntoxicationPower(target,info.owner,1)));
+            gasAmt++;
         }
+        if (gasAmt==0){return;}
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new IntoxicationPower(target,info.owner,gasAmt),gasAmt));
     }
 
 

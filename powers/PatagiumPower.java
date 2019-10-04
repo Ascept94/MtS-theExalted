@@ -1,6 +1,7 @@
 package Bromod.powers;
 
 import Bromod.BroMod;
+import Bromod.characters.TheExalted;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -54,20 +55,29 @@ public class PatagiumPower extends AbstractPower implements CloneablePowerInterf
 
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        if (card.type == AbstractCard.CardType.ATTACK){
+        if (card.type == AbstractCard.CardType.ATTACK && !TheExalted.hasAscaris()){
             AbstractPlayer p = AbstractDungeon.player;
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FlyPower(p,p,amount,0),amount));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FlyPower(p,p,amount,0,0),amount));
+        }
+        else if (card.type == AbstractCard.CardType.ATTACK && TheExalted.hasAscaris() && owner.hasPower("Bromod:FlyPower")) {
+            AbstractPlayer p = AbstractDungeon.player;
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FlyPower(p,p,0,amount, 0),0));
         }
     }
 
     @Override
     public void atEndOfTurn(final boolean isPlayer) {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, this.POWER_ID));
+        if (!TheExalted.hasAscaris()){
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, this.POWER_ID));
+        }
     }
 
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        if (TheExalted.hasAscaris()){
+            description = DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
+        }
     }
 
     @Override

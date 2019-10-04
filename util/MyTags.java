@@ -11,7 +11,7 @@ public class MyTags {
     @SpireEnum
     public static CardTags COMBO;
     public static CardTags BULLET_JUMP;
-
+    public static CardTags NERF;
 
     public MyTags() {
     }

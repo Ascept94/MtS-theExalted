@@ -55,11 +55,6 @@ public class SlipMagazinePower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
-    public void onSpecificTrigger() {
-        super.onSpecificTrigger();
-    }
-
-    @Override
     public void updateDescription() {
         if (amount == 1) {
             description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];

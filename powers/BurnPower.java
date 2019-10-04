@@ -1,8 +1,10 @@
 package Bromod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -15,7 +17,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import Bromod.BroMod;
 import Bromod.util.TextureLoader;
 
-public class BurnPower extends AbstractPower implements CloneablePowerInterface {
+public class BurnPower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower {
     public AbstractCreature source;
 
     public static final String POWER_ID = BroMod.makeID("BurnPower");
@@ -54,6 +56,16 @@ public class BurnPower extends AbstractPower implements CloneablePowerInterface 
             AbstractDungeon.actionManager.addToBottom(new DamageAction(this.owner,dmgInfo, AbstractGameAction.AttackEffect.FIRE));
         }
         AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.source, this.POWER_ID ));
+    }
+
+    @Override
+    public int getHealthBarAmount() {
+        return this.amount * this.amount;
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.ORANGE;
     }
 
     @Override

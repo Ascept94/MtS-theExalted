@@ -49,14 +49,7 @@ public class PuncturePower extends AbstractPower implements CloneablePowerInterf
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
-        int CHANCE = amount*100;
-        while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new WeakPower(target,1,false),1));
-            CHANCE -= 100;
-        }
-        if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new WeakPower(target,1,false), 1));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new WeakPower(target,amount,false), amount));
     }
 
 

@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import Bromod.util.TextureLoader;
+import com.megacrit.cardcrawl.powers.FlightPower;
 
 import static Bromod.BroMod.makePowerPath;
 
@@ -31,9 +32,10 @@ public class FlyPower extends AbstractPower implements CloneablePowerInterface {
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("FlyPower32.png"));
 
     private static int storedAmount;
+    private static int superstoredAmount;
 
 
-    public FlyPower(final AbstractCreature owner, final AbstractCreature source, final int amount, final int storedAmount) {
+    public FlyPower(final AbstractCreature owner, final AbstractCreature source, final int amount, final int storedAmount, final int superstoredAmount) {
         name = NAME;
         description = DESCRIPTIONS[0];
         this.ID = POWER_ID;
@@ -42,6 +44,7 @@ public class FlyPower extends AbstractPower implements CloneablePowerInterface {
         this.source = source;
         this.amount = amount;
         this.storedAmount = storedAmount > this.storedAmount ? storedAmount : this.storedAmount;
+        this.superstoredAmount = superstoredAmount > this.superstoredAmount ? superstoredAmount : this.superstoredAmount;
 
         type = PowerType.BUFF;
         isTurnBased = false;
@@ -54,8 +57,21 @@ public class FlyPower extends AbstractPower implements CloneablePowerInterface {
     }
 
     public void atStartOfTurn() {
-        this.amount = storedAmount;
+        this.amount = storedAmount + superstoredAmount;
+        this.storedAmount = 0;
+        this.superstoredAmount = this.amount == 0? 0: this.superstoredAmount;
+        if (amount == 0){
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner,owner,this));
+        }
         this.updateDescription();
+    }
+
+    @Override
+    public void onInitialApplication() {
+        if (amount < 2){
+            this.superstoredAmount = 0;
+            this.updateDescription();
+        }
     }
 
     @Override
@@ -78,17 +94,30 @@ public class FlyPower extends AbstractPower implements CloneablePowerInterface {
     }
 
     @Override
+    public void onRemove() {
+        this.storedAmount = 0;
+        this.superstoredAmount = 0;
+    }
+
+
+    @Override
     public void updateDescription() {
         if (this.amount == 1){
-            description = DESCRIPTIONS[1] + storedAmount + DESCRIPTIONS[3];
+            description = DESCRIPTIONS[0];
         }
         else {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2] + storedAmount + DESCRIPTIONS[3];
+            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        }
+        if (this.storedAmount + this.superstoredAmount == 0){
+            description += DESCRIPTIONS[3] + DESCRIPTIONS[5];
+        }
+        else{
+            description += DESCRIPTIONS[4] + (storedAmount + superstoredAmount) + DESCRIPTIONS[5];
         }
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new FlyPower(owner, source, amount, storedAmount);
+        return new FlyPower(owner, source, amount, storedAmount, superstoredAmount);
     }
 }

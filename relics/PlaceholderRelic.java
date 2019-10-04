@@ -1,13 +1,13 @@
 package Bromod.relics;
 
+import Bromod.BroMod;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import Bromod.DefaultMod;
 import Bromod.util.TextureLoader;
 
-import static Bromod.DefaultMod.makeRelicOutlinePath;
-import static Bromod.DefaultMod.makeRelicPath;
+import static Bromod.BroMod.makeRelicOutlinePath;
+import static Bromod.BroMod.makeRelicPath;
 
 public class PlaceholderRelic extends CustomRelic {
 
@@ -18,7 +18,7 @@ public class PlaceholderRelic extends CustomRelic {
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("PlaceholderRelic");
+    public static final String ID = BroMod.makeID("PlaceholderRelic");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));

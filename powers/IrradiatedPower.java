@@ -1,6 +1,7 @@
 package Bromod.powers;
 
 import Bromod.BroMod;
+import Bromod.characters.TheExalted;
 import Bromod.util.TextureLoader;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
@@ -53,6 +54,9 @@ public class IrradiatedPower extends AbstractPower implements CloneablePowerInte
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
         DamageInfo dmgInfo = new DamageInfo(AbstractDungeon.player, ((AbstractMonster)owner).getIntentDmg(), DamageInfo.DamageType.THORNS);
         AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(dmgInfo, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        if (TheExalted.hasAscaris()){
+            AbstractDungeon.actionManager.addToTop(new ReducePowerAction(owner,owner,this.ID, 1));
+        }
     }
 
 
@@ -69,6 +73,7 @@ public class IrradiatedPower extends AbstractPower implements CloneablePowerInte
         else{
             description = DESCRIPTIONS[2];
         }
+        description = TheExalted.hasAscaris()? description + DESCRIPTIONS[3] + DESCRIPTIONS[4] : description + DESCRIPTIONS[3];
     }
 
     @Override

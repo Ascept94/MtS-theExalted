@@ -1,5 +1,6 @@
 package Bromod.powers;
 
+import Bromod.characters.TheExalted;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -27,6 +28,7 @@ public class ToxinPower extends AbstractPower implements CloneablePowerInterface
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     private static final Texture tex84 = TextureLoader.getTexture("BromodResources/images/powers/ToxinPower84.png");
     private static final Texture tex32 = TextureLoader.getTexture("BromodResources/images/powers/ToxinPower32.png");
+    private static final int poisonAmt = TheExalted.hasAscaris() ? 1 : 2;
 
     public ToxinPower(final AbstractCreature owner, final AbstractCreature source, final int amount, final boolean oneturn) {
         name = NAME;
@@ -51,13 +53,16 @@ public class ToxinPower extends AbstractPower implements CloneablePowerInterface
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
         int CHANCE = amount*10;
+        int poisAmt = 0;
         while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new PoisonPower(target,info.owner,2),2));
+            poisAmt += poisonAmt;
             CHANCE -= 100;
         }
         if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new PoisonPower(target,info.owner,2),2));
+            poisAmt += poisonAmt;
         }
+        if (poisAmt==0){return;}
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new PoisonPower(target,info.owner,poisAmt),poisAmt));
     }
 
     @Override
@@ -108,7 +113,7 @@ public class ToxinPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + (amount*10) + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + (amount*10) + DESCRIPTIONS[1] + this.poisonAmt + DESCRIPTIONS[2];
     }
 
     @Override

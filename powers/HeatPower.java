@@ -1,5 +1,6 @@
 package Bromod.powers;
 
+import Bromod.characters.TheExalted;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -50,13 +51,19 @@ public class HeatPower extends AbstractPower implements CloneablePowerInterface 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
         int CHANCE = amount*10;
+        int burAmt = 0;
         while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new BurnPower(target,info.owner,1),1));
+            burAmt++;
             CHANCE -= 100;
         }
+
         if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new BurnPower(target,info.owner,1),1));
+            burAmt++;
         }
+        if (burAmt==0){return;}
+
+        AbstractPower powerToApply = TheExalted.hasAscaris() ?new nerfBurnPower(target,info.owner,burAmt) : new BurnPower(target,info.owner,burAmt);
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, powerToApply,burAmt));
     }
 
     @Override

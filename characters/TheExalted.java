@@ -1,5 +1,7 @@
 package Bromod.characters;
 
+import Bromod.BroMod;
+import Bromod.relics.AscarisDevice;
 import Bromod.relics.Ordis;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
@@ -14,31 +16,26 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import Bromod.DefaultMod;
 import Bromod.cards.*;
-import Bromod.relics.DefaultClickableRelic;
-import Bromod.relics.PlaceholderRelic;
-import Bromod.relics.PlaceholderRelic2;
 
 import java.util.ArrayList;
 
-import static Bromod.DefaultMod.*;
+import static Bromod.BroMod.*;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
-//All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
+//All text (starting description and loadout, anything labeled TEXT[]) can be found in BroMod-character-Strings.json in the resources
 
 public class TheExalted extends CustomPlayer {
-    public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
+    public static final Logger logger = LogManager.getLogger(BroMod.class.getName());
 
     // =============== CHARACTER ENUMERATORS =================
     // These are enums for your Characters color (both general color and for the card library) as well as
@@ -55,23 +52,6 @@ public class TheExalted extends CustomPlayer {
         public static AbstractCard.CardColor COLOR_BRO;
         @SpireEnum(name = "BRO_COLOR")
         public static CardLibrary.LibraryType LIBRARY_COLOR_BRO;
-
-        @SpireEnum(name = "MOD_RARE")
-        public static AbstractCard.CardColor MOD_COLOR_RARE;
-        @SpireEnum(name = "MOD_RARE")
-        public static CardLibrary.LibraryType LIBRARY_MOD_COLOR_RARE;
-
-        @SpireEnum(name = "MOD_UNCOMMON")
-        public static AbstractCard.CardColor MOD_COLOR_UNCOMMON;
-        @SpireEnum(name = "MOD_UNCOMMON")
-        public static CardLibrary.LibraryType LIBRARY_MOD_COLOR_UNCOMMON;
-
-        @SpireEnum(name = "MOD_COMMON")
-        public static AbstractCard.CardColor MOD_COLOR_COMMON;
-        @SpireEnum(name = "MOD_COMMON")
-        public static CardLibrary.LibraryType LIBRARY_MOD_COLOR_COMMON;
-
-
     }
 
     // =============== CHARACTER ENUMERATORS  =================
@@ -81,7 +61,7 @@ public class TheExalted extends CustomPlayer {
 
     public static final int ENERGY_PER_TURN = 3;
     public static final int STARTING_HP = 100;
-    public static final int MAX_HP = 100;
+    public static final int MAX_HP = 75;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 0;
@@ -128,7 +108,7 @@ public class TheExalted extends CustomPlayer {
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
-                // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
+                // I left these in BroMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
                 THE_EXALTED_SHOULDER_1, // campfire pose
                 THE_EXALTED_SHOULDER_2, // another campfire pose
                 THE_EXALTED_CORPSE, // dead corpse
@@ -197,6 +177,7 @@ public class TheExalted extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         retVal.add(Ordis.ID);
+        retVal.add(AscarisDevice.ID);
 
         return retVal;
     }
@@ -235,7 +216,7 @@ public class TheExalted extends CustomPlayer {
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return DefaultMod.COLOR_BRO;
+        return BroMod.COLOR_BRO;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -272,14 +253,14 @@ public class TheExalted extends CustomPlayer {
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return DefaultMod.COLOR_BRO;
+        return BroMod.COLOR_BRO;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return Bromod.DefaultMod.COLOR_BRO;
+        return BroMod.COLOR_BRO;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects
@@ -309,5 +290,14 @@ public class TheExalted extends CustomPlayer {
         return TEXT[2];
     }
 
+    public static boolean hasAscaris(){
+        try {
+            return !AbstractDungeon.player.getRelic("Bromod:AscarisDevice").usedUp;
+        }
+        catch (Exception e){
+            return true;
+        }
+
+    }
 
 }

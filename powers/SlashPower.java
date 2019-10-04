@@ -48,14 +48,8 @@ public class SlashPower extends AbstractPower implements CloneablePowerInterface
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
-        int CHANCE = amount*100;
-        while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new BleedPower(target,info.owner,1)));
-            CHANCE -= 100;
-        }
-        if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new BleedPower(target,info.owner,1)));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new BleedPower(target,info.owner,amount),amount));
+
     }
 
 
@@ -66,7 +60,7 @@ public class SlashPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + (amount*10) + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + (amount) + DESCRIPTIONS[1];
     }
 
     @Override

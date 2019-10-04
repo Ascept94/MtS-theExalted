@@ -1,34 +1,46 @@
 package Bromod.powers;
 
-import Bromod.BroMod;
-import Bromod.util.TextureLoader;
+import Bromod.util.MyTags;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import Bromod.BroMod;
+import Bromod.util.TextureLoader;
 
-public class RadiationPower extends AbstractPower implements CloneablePowerInterface {
+import java.util.ArrayList;
+
+import static Bromod.BroMod.makePowerPath;
+
+public class TempRegenPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = BroMod.makeID("RadiationPower");
+    public static final String POWER_ID = BroMod.makeID("TempRegenPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
+
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
-    private static final Texture tex84 = TextureLoader.getTexture("BromodResources/images/powers/RadiationPower84.png");
-    private static final Texture tex32 = TextureLoader.getTexture("BromodResources/images/powers/RadiationPower32.png");
+    // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("TempRegenPower84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("TempRegenPower32.png"));
+    // The Name requires to be of the form: NamePower
 
-    public RadiationPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+
+    public TempRegenPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
-
         ID = POWER_ID;
 
         this.owner = owner;
@@ -46,34 +58,17 @@ public class RadiationPower extends AbstractPower implements CloneablePowerInter
     }
 
     @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (info.type != DamageInfo.DamageType.NORMAL){return;}
-        int CHANCE = amount*10;
-        int radAmt = 0;
-        while(CHANCE >= 100){
-            radAmt++;
-            CHANCE -= 100;
-        }
-        if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            radAmt++;
-        }
-        if (radAmt==0){return;}
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner, new IrradiatedPower(target,info.owner,radAmt),radAmt));
-    }
-
-
-    @Override
     public void atEndOfTurn(boolean isPlayer) {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner,this.source,POWER_ID + "1"));
+        AbstractDungeon.actionManager.addToBottom(new AddTemporaryHPAction(owner,owner,this.amount));
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + (amount*10) + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new RadiationPower(owner, source, amount);
+        return new TempRegenPower(owner, source, amount);
     }
 }

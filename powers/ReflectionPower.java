@@ -1,5 +1,6 @@
 package Bromod.powers;
 
+import Bromod.characters.TheExalted;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -63,7 +64,9 @@ public class ReflectionPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void atStartOfTurn() {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, this.POWER_ID));
+        if (TheExalted.hasAscaris()){
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, this.POWER_ID));
+        }
     }
 
     @Override
@@ -73,6 +76,9 @@ public class ReflectionPower extends AbstractPower implements CloneablePowerInte
         }
         else{
             description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        }
+        if (TheExalted.hasAscaris()){
+            description += DESCRIPTIONS[3];
         }
     }
 

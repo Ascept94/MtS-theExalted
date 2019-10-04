@@ -1,9 +1,12 @@
 package Bromod.powers;
 
+import Bromod.characters.TheExalted;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,7 +18,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static Bromod.BroMod.makePowerPath;
 
-public class ProvokedPower extends AbstractPower implements CloneablePowerInterface {
+public class ProvokedPower extends AbstractPower implements CloneablePowerInterface, OnReceivePowerPower {
     public AbstractCreature source;
 
     public static final String POWER_ID = BroMod.makeID("ProvokedPower");
@@ -51,34 +54,49 @@ public class ProvokedPower extends AbstractPower implements CloneablePowerInterf
     }
 
     @Override
-    public void onInitialApplication() {
-        if (AbstractDungeon.player.hasPower("Vulnerable")){
-            VulnerableAmount = AbstractDungeon.player.getPower("Vulnerable").amount;
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner,source,new StrengthPower(owner,VulnerableAmount),VulnerableAmount));
-        }
-        else{
-            VulnerableAmount = 0;
-        }
+    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
+        return true;
     }
 
     @Override
-    public void atStartOfTurn() {
-        if (AbstractDungeon.player.hasPower("Vulnerable")) {
-            int difference = AbstractDungeon.player.getPower("Vulnerable").amount - VulnerableAmount -1;
-            if (difference > 0){
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner,source,new StrengthPower(owner,difference),difference));
+    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
+        if (TheExalted.hasAscaris() && source == owner){return stackAmount;}
+        if (power.type == PowerType.DEBUFF && target == owner){
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner,owner, new StrengthPower(owner,this.amount)));
+        }
+        return stackAmount;
+    }
+
+    /*
+            @Override
+            public void onInitialApplication() {
+                if (AbstractDungeon.player.hasPower("Vulnerable")){
+                    VulnerableAmount = AbstractDungeon.player.getPower("Vulnerable").amount;
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner,source,new StrengthPower(owner,VulnerableAmount),VulnerableAmount));
+                }
+                else{
+                    VulnerableAmount = 0;
+                }
             }
-            VulnerableAmount = AbstractDungeon.player.getPower("Vulnerable").amount - 1;
-        }
-    }
 
-    @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        if (isPlayer){
-            VulnerableAmount --;
-        }
-    }
+            @Override
+            public void atStartOfTurn() {
+                if (AbstractDungeon.player.hasPower("Vulnerable")) {
+                    int difference = AbstractDungeon.player.getPower("Vulnerable").amount - VulnerableAmount -1;
+                    if (difference > 0){
+                        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner,source,new StrengthPower(owner,difference),difference));
+                    }
+                    VulnerableAmount = AbstractDungeon.player.getPower("Vulnerable").amount - 1;
+                }
+            }
 
+            @Override
+            public void atEndOfTurn(boolean isPlayer) {
+                if (isPlayer){
+                    VulnerableAmount --;
+                }
+            }
+        */
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];

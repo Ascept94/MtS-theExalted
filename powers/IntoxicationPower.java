@@ -1,10 +1,13 @@
 package Bromod.powers;
 
 import Bromod.BroMod;
+import Bromod.characters.TheExalted;
 import Bromod.util.TextureLoader;
 import basemod.interfaces.CloneablePowerInterface;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -18,7 +21,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 
-public class IntoxicationPower extends AbstractPower implements CloneablePowerInterface {
+public class IntoxicationPower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower {
     public AbstractCreature source;
 
     public static final String POWER_ID = BroMod.makeID("IntoxicationPower");
@@ -49,6 +52,15 @@ public class IntoxicationPower extends AbstractPower implements CloneablePowerIn
         updateDescription();
     }
 
+    @Override
+    public int getHealthBarAmount() {
+        return this.amount;
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.OLIVE;
+    }
 
     @Override
     public void atStartOfTurn() {
@@ -57,17 +69,18 @@ public class IntoxicationPower extends AbstractPower implements CloneablePowerIn
         for (AbstractCreature mo : AbstractDungeon.getCurrRoom().monsters.monsters){
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo,owner, new PoisonPower(mo, owner, this.amount)));
         }
-
-    }
-
-    @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(owner,owner,this,1));
+        if (TheExalted.hasAscaris()){
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner,owner,this));
+        }
+        else{
+            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(owner,owner,this,1));
+        }
     }
 
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + (amount) + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        description = TheExalted.hasAscaris()? description + DESCRIPTIONS[4] : description + DESCRIPTIONS[3];
     }
 
     @Override

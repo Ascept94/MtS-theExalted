@@ -1,5 +1,6 @@
 package Bromod.powers;
 
+import Bromod.characters.TheExalted;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -28,6 +29,8 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface 
     private static final Texture tex84 = TextureLoader.getTexture("BromodResources/images/powers/ColdPower84.png");
     private static final Texture tex32 = TextureLoader.getTexture("BromodResources/images/powers/ColdPower32.png");
 
+    private static final int coldAmt = TheExalted.hasAscaris() ? 1 : 2;
+
     public ColdPower(final AbstractCreature owner, final AbstractCreature source, final int amount, final boolean oneturn) {
         name = NAME;
 
@@ -51,13 +54,16 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface 
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
         int CHANCE = amount*10;
+        int cldAmt= 0;
         while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner,new SlowPower(target,2),2,true));
+            cldAmt+= this.coldAmt;
             CHANCE -= 100;
         }
         if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner,new SlowPower(target,2),2,true));
+            cldAmt+= this.coldAmt;
         }
+        if (cldAmt==0){return;}
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target,info.owner,new SlowPower(target,cldAmt),cldAmt,true));
     }
 
     @Override
@@ -108,7 +114,7 @@ public class ColdPower extends AbstractPower implements CloneablePowerInterface 
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + (amount*10) + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + (amount*10) + DESCRIPTIONS[1] + this.coldAmt + DESCRIPTIONS[2];
     }
 
     @Override

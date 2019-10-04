@@ -1,6 +1,7 @@
 package Bromod.powers;
 
 import Bromod.BroMod;
+import Bromod.characters.TheExalted;
 import Bromod.util.TextureLoader;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
@@ -28,6 +29,8 @@ public class ViralPower extends AbstractPower implements CloneablePowerInterface
     private static final Texture tex84 = TextureLoader.getTexture("BromodResources/images/powers/ViralPower84.png");
     private static final Texture tex32 = TextureLoader.getTexture("BromodResources/images/powers/ViralPower32.png");
 
+    private int dmg = 0;
+
     public ViralPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
 
@@ -50,15 +53,22 @@ public class ViralPower extends AbstractPower implements CloneablePowerInterface
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (info.type != DamageInfo.DamageType.NORMAL){return;}
-        DamageInfo dmgInfo = new DamageInfo(AbstractDungeon.player, MathUtils.floor(target.currentHealth/10), DamageInfo.DamageType.HP_LOSS);
+
         int CHANCE = amount*10;
         while(CHANCE >= 100){
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, dmgInfo, AbstractGameAction.AttackEffect.POISON));
+                dmg += target.currentHealth/10;
             CHANCE -= 100;
         }
         if(AbstractDungeon.miscRng.random(99) <= (CHANCE-1)){
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, dmgInfo, AbstractGameAction.AttackEffect.POISON));
+                dmg += target.currentHealth/10;
         }
+
+        if(dmg == 0){return;}
+        if (TheExalted.hasAscaris()) {dmg = dmg > this.amount? this.amount : dmg;}
+
+        DamageInfo dmgInfo = new DamageInfo(AbstractDungeon.player, MathUtils.floor(dmg), DamageInfo.DamageType.HP_LOSS);
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, dmgInfo, AbstractGameAction.AttackEffect.POISON));
+        dmg = 0;
     }
 
 
@@ -70,6 +80,9 @@ public class ViralPower extends AbstractPower implements CloneablePowerInterface
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + (amount*10) + DESCRIPTIONS[1];
+        if (TheExalted.hasAscaris()){
+            description += DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
+        }
     }
 
     @Override
