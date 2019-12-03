@@ -36,8 +36,8 @@ public class FinishingTouch extends AbstractComboCard {
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheExalted.Enums.COLOR_BRO;
 
-    private static final int COST = 2;
-    private static final int UPGRADED_COST = 1;
+    private static final int COST = 1;
+    private static final int UPGRADED_COST = 0;
 
     private static final int DAMAGE = 2;
     private static final int UPGRADE_PLUS_DMG = 2;
@@ -78,6 +78,9 @@ public class FinishingTouch extends AbstractComboCard {
         }
         this.diff = this.damage - this.baseDamage;
         this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + this.diff;
+        if (TheExalted.hasAscaris()){
+            this.ComboDamage = (int)(this.baseDamage*Math.pow(1.5,this.ComboCounter)) + diff;
+        }
         this.rawDescription = this.DESCRIPTION; //+ this.EXTENDED_DESCRIPTION[0];
         this.initializeDescription();
     }
@@ -87,6 +90,9 @@ public class FinishingTouch extends AbstractComboCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.diff = this.damage - this.baseDamage;
         this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + diff;
+        if (TheExalted.hasAscaris()){
+            this.ComboDamage = (int)(this.baseDamage*Math.pow(1.5,this.ComboCounter)) + diff;
+        }
         AbstractGameAction.AttackEffect effect = AbstractGameAction.AttackEffect.NONE;
 
         switch (this.ComboCounter){

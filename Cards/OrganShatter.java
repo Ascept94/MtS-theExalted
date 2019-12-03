@@ -78,7 +78,11 @@ public class OrganShatter extends AbstractComboCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         DamageInfo dmgInfo = new DamageInfo(p,this.damage, damageType.NORMAL);
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, dmgInfo, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p, new VulnerablePower(m,this.magicNumber*(int)Math.pow(2,this.COMBO), false), this.magicNumber*(int)Math.pow(2,this.COMBO)));
+        int mgn = this.magicNumber*(int)Math.pow(2,this.COMBO);
+        if (TheExalted.hasAscaris()){
+            mgn = this.ComboDamage = this.magicNumber*(int)Math.pow(1.5,this.ComboCounter);
+        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m,p, new VulnerablePower(m,mgn, false), mgn));
         this.COMBO = 0;
         this.ComboCounter = this.COMBO;
         this.rawDescription = this.DESCRIPTION;

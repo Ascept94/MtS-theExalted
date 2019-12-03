@@ -73,6 +73,9 @@ public class SlashDash extends AbstractComboCard {
         }
         this.diff = this.damage - this.baseDamage;
         this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + diff;
+        if (TheExalted.hasAscaris()){
+            this.ComboDamage = (int)(this.baseDamage*Math.pow(1.5,this.ComboCounter)) + diff;
+        }
         this.rawDescription = this.DESCRIPTION; //+ this.EXTENDED_DESCRIPTION[0];
         this.initializeDescription();
     }
@@ -82,6 +85,9 @@ public class SlashDash extends AbstractComboCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.diff = this.damage - this.baseDamage;
         this.ComboDamage = this.baseDamage*(int)Math.pow(2,this.ComboCounter) + diff;
+        if (TheExalted.hasAscaris()){
+            this.ComboDamage = (int)(this.baseDamage*Math.pow(1.5,this.ComboCounter)) + diff;
+        }
 
         AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.ComboDamage, damageTypeForTurn),AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         this.COMBO = 0;
