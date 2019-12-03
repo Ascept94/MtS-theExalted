@@ -1,12 +1,16 @@
 package Bromod;
 
+import Bromod.events.DragonKeysEvent;
+import Bromod.events.VaultDoorEvent;
+import Bromod.potions.*;
+import Bromod.powers.BlindRagePower;
 import Bromod.relics.*;
-import Bromod.util.MyTags;
 import Bromod.variables.ComboMagic;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.abstracts.CustomCard;
+import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -18,35 +22,39 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.cards.colorless.Blind;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.map.MapRoomNode;
+import com.megacrit.cardcrawl.random.Random;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import Bromod.cards.*;
 import Bromod.characters.TheExalted;
-import Bromod.events.IdentityCrisisEvent;
 import Bromod.util.IDCheckDontTouchPls;
 import Bromod.util.TextureLoader;
 import Bromod.variables.DefaultCustomVariable;
 import Bromod.variables.DefaultSecondMagicNumber;
 import Bromod.variables.ComboDamage;
+import sun.font.DelegatingShape;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Properties;
 
 import static Bromod.characters.TheExalted.Enums.*;
+import static com.megacrit.cardcrawl.neow.NeowEvent.rng;
 
 // Please don't just mass replace "Bromod" with "yourMod" everywhere.
 // It'll be a bigger pain for you. You only need to replace it in 3 places.
@@ -80,8 +88,8 @@ public class BroMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber/*,
-        PreDungeonUpdateSubscriber,
-        StartActSubscriber*/ {
+        PreDungeonUpdateSubscriber*/,
+        StartActSubscriber{
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(BroMod.class.getName());
@@ -92,9 +100,13 @@ public class BroMod implements
     public static final String ENABLE_DEBUFF_HEALTHBARS = "enableDebuffHealthBars";
     public static boolean enableDebuffHealthBars = true; // The boolean we'll be setting on/off (true/false)
 
+    public static ArrayList<String> TmpEventList = new ArrayList<>();
+    public static ArrayList<String> TmpSpecialEventList= new ArrayList<>();
+    public static ArrayList<String> TmpShrineList= new ArrayList<>();
+
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "The Exalted";
-    private static final String AUTHOR = "Ascept"; // And pretty soon - You!
+    private static final String AUTHOR = "Ascept";
     private static final String DESCRIPTION = "A mod adding a new custom character, the Exalted, based on Excalibur from Warframe.";
 
     // =============== INPUT TEXTURE LOCATION =================
@@ -191,6 +203,10 @@ public class BroMod implements
 
     public static String makeRelicOutlinePath(String resourcePath) {
         return getModID() + "Resources/images/relics/outline/" + resourcePath;
+    }
+
+    public static String makePotionPath(String resourcePath) {
+        return getModID() + "Resources/images/potions/" + resourcePath;
     }
 
     public static String makeOrbPath(String resourcePath) {
@@ -412,8 +428,8 @@ public class BroMod implements
         // part of the game, simply don't include the dungeon ID
         // If you want to have a character-specific event, look at slimebound (CityRemoveEventPatch).
         // Essentially, you need to patch the game and say "if a player is not playing my character class, remove the event from the pool"
-        //BaseMod.addEvent(IdentityCrisisEvent.ID, IdentityCrisisEvent.class, TheCity.ID);
-
+        BaseMod.addEvent(DragonKeysEvent.ID, DragonKeysEvent.class, TheCity.ID);
+        BaseMod.addEvent(VaultDoorEvent.ID, VaultDoorEvent.class, TheBeyond.ID);
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
     }
@@ -430,6 +446,15 @@ public class BroMod implements
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_EXALTED".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
         //BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheExalted.Enums.THE_EXALTED);
+        BaseMod.addPotion(HealthRestore.class,null,null,null,HealthRestore.POTION_ID, THE_EXALTED);
+        BaseMod.addPotion(EnergyRestore.class,null,null,null,EnergyRestore.POTION_ID, THE_EXALTED);
+        BaseMod.addPotion(AmmoRestore.class,null,null,null,AmmoRestore.POTION_ID, THE_EXALTED);
+        BaseMod.addPotion(ShieldRestore.class,null,null,null,ShieldRestore.POTION_ID, THE_EXALTED);
+        BaseMod.addPotion(Forma.class,null,null,null,Forma.POTION_ID, THE_EXALTED);
+        BaseMod.addPotion(Kuva.class,null,null,null,Kuva.POTION_ID, THE_EXALTED);
+        BaseMod.addPotion(Endo.class,null,null,null,Endo.POTION_ID, THE_EXALTED);
+        BaseMod.addPotion(ClemClone.class,null,null,null,ClemClone.POTION_ID, THE_EXALTED);
+
 
         logger.info("Done editing potions");
     }
@@ -446,6 +471,12 @@ public class BroMod implements
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new Ordis(), TheExalted.Enums.COLOR_BRO);
         BaseMod.addRelicToCustomPool(new AscarisDevice(), TheExalted.Enums.COLOR_BRO);
+        BaseMod.addRelicToCustomPool(new ArcaneAegis(), TheExalted.Enums.COLOR_BRO);
+        BaseMod.addRelic(new BleedingDragonKey(), RelicType.SHARED);
+        BaseMod.addRelic(new DecayingDragonKey(), RelicType.SHARED);
+        BaseMod.addRelic(new ExtinguishedDragonKey(), RelicType.SHARED);
+        BaseMod.addRelic(new HobbledDragonKey(), RelicType.SHARED);
+        BaseMod.addRelic(new DragonsCurse(), RelicType.SHARED);
 
 
         // This adds a relic to the Shared pool. Every character can find this relic.
@@ -497,7 +528,7 @@ public class BroMod implements
         BaseMod.addCard(new BulletJump());
         BaseMod.addCard(new FashionFrame());
         BaseMod.addCard(new ArchwingLauncher());
-        BaseMod.addCard(new Forma());
+        BaseMod.addCard(new FormaBlueprint());
         BaseMod.addCard(new ExaltedBlade());
         BaseMod.addCard(new ExaltedCancel());
         BaseMod.addCard(new RadialJavelin());
@@ -555,6 +586,10 @@ public class BroMod implements
         BaseMod.addCard(new QuickThinking());
         BaseMod.addCard(new Rage());
         BaseMod.addCard(new Foundry());
+        BaseMod.addCard(new FleetingExpertise());
+        BaseMod.addCard(new BlindRage());
+        BaseMod.addCard(new SpoiledStrike());
+        BaseMod.addCard(new NarrowMinded());
 
 
         logger.info("Making sure the cards are unlocked.");
@@ -580,7 +615,7 @@ public class BroMod implements
         UnlockTracker.unlockCard(BulletJump.ID);
         UnlockTracker.unlockCard(FashionFrame.ID);
         UnlockTracker.unlockCard(ArchwingLauncher.ID);
-        UnlockTracker.unlockCard(Forma.ID);
+        UnlockTracker.unlockCard(FormaBlueprint.ID);
         UnlockTracker.unlockCard(ExaltedBlade.ID);
         UnlockTracker.unlockCard(ExaltedCancel.ID);
         UnlockTracker.unlockCard(RadialJavelin.ID);
@@ -638,6 +673,10 @@ public class BroMod implements
         UnlockTracker.unlockCard(QuickThinking.ID);
         UnlockTracker.unlockCard(Rage.ID);
         UnlockTracker.unlockCard(Foundry.ID);
+        UnlockTracker.unlockCard(FleetingExpertise.ID);
+        UnlockTracker.unlockCard(NarrowMinded.ID);
+        UnlockTracker.unlockCard(SpoiledStrike.ID);
+        UnlockTracker.unlockCard(BlindRage.ID);
 
         logger.info("Done adding cards!");
     }
@@ -723,12 +762,13 @@ public class BroMod implements
 
 
     public static void setModBackground(CustomCard card) { //ModUncommon_skill.png"
+        String Rarity = card.rarity == AbstractCard.CardRarity.SPECIAL ? "rare" : card.rarity.toString().toLowerCase();
 
-        card.setBackgroundTexture("BromodResources/images/512/Mod" + card.rarity.toString().toLowerCase() + "_" + card.type.toString().toLowerCase() + ".png",
-               "BromodResources/images/1024/Mod" + card.rarity.toString().toLowerCase() + "_" + card.type.toString().toLowerCase() + ".png");
+        card.setBackgroundTexture("BromodResources/images/512/Mod" + Rarity + "_" + card.type.toString().toLowerCase() + ".png",
+               "BromodResources/images/1024/Mod" + Rarity + "_" + card.type.toString().toLowerCase() + ".png");
 
-        card.setOrbTexture("BromodResources/images/512/WF_Card_Orb" + card.rarity.toString().toLowerCase() + ".png",
-                "BromodResources/images/1024/WF_Card_Orb" + card.rarity.toString().toLowerCase() + ".png");
+        card.setOrbTexture("BromodResources/images/512/WF_Card_Orb" + Rarity + ".png",
+                "BromodResources/images/1024/WF_Card_Orb" + Rarity + ".png");
     }
 
 /*
@@ -763,36 +803,35 @@ public class BroMod implements
         }
 
     }
-
+*/
 
     @Override
     public void receiveStartAct() {
-        if (AbstractDungeon.player.chosenClass == THE_EXALTED){
-            ArrayList<AbstractCard> tmpPool = new ArrayList();
-            CardLibrary.addCardsIntoPool(tmpPool, MOD_COLOR_COMMON);
-            CardLibrary.addCardsIntoPool(tmpPool, MOD_COLOR_UNCOMMON);
-            CardLibrary.addCardsIntoPool(tmpPool, MOD_COLOR_RARE);
-            Iterator var4 = tmpPool.iterator();
-            AbstractCard c;
-            while (var4.hasNext()) {
-                c = (AbstractCard) var4.next();
-                switch (c.rarity) {
-                    case COMMON:
-                        AbstractDungeon.commonCardPool.addToRandomSpot(c);
-                        AbstractDungeon.srcCommonCardPool.addToRandomSpot(c);
-                        break;
-                    case UNCOMMON:
-                        AbstractDungeon.uncommonCardPool.addToRandomSpot(c);
-                        AbstractDungeon.srcUncommonCardPool.addToRandomSpot(c);
-                        break;
-                    case RARE:
-                        AbstractDungeon.rareCardPool.addToRandomSpot(c);
-                        AbstractDungeon.srcRareCardPool.addToRandomSpot(c);
-                        break;
-                    default:
-                        logger.info("Unspecified rarity: " + c.rarity.name() + " when creating pools! AbstractDungeon: Line 827");
-                }
-            }
+        if (AbstractDungeon.player.chosenClass == THE_EXALTED && AbstractDungeon.id.equals("TheCity")) {
+            logger.info("Event List: " + AbstractDungeon.eventList.toString());
+            logger.info("Special event List: " + AbstractDungeon.specialOneTimeEventList.toString());
+            logger.info("Shrine event List: " + AbstractDungeon.shrineList.toString());
+            AbstractDungeon.eventList.remove(DragonKeysEvent.ID);
+            TmpEventList.addAll(AbstractDungeon.eventList);
+            TmpSpecialEventList.addAll(AbstractDungeon.specialOneTimeEventList);
+            TmpShrineList.addAll(AbstractDungeon.shrineList);
+            AbstractDungeon.eventList.clear();
+            AbstractDungeon.specialOneTimeEventList.clear();
+            AbstractDungeon.shrineList.clear();
+            AbstractDungeon.eventList.add(DragonKeysEvent.ID);
+            logger.info("Event List: " + AbstractDungeon.eventList.toString());
+            logger.info("tmp Event List: " + TmpEventList);
+            logger.info("Special event List: " + AbstractDungeon.specialOneTimeEventList.toString());
+            logger.info("Shrine event List: " + AbstractDungeon.shrineList.toString());
+            logger.info("done DungeonInitialize");
+        } else if (AbstractDungeon.eventList.contains(DragonKeysEvent.ID)) {
+            AbstractDungeon.eventList.remove(DragonKeysEvent.ID);
         }
-    }*/
+
+
+        if (AbstractDungeon.eventList.contains(VaultDoorEvent.ID) && !AbstractDungeon.player.hasRelic(BleedingDragonKey.ID) && !AbstractDungeon.player.hasRelic(DecayingDragonKey.ID) && !AbstractDungeon.player.hasRelic(ExtinguishedDragonKey.ID) && !AbstractDungeon.player.hasRelic(HobbledDragonKey.ID)) {
+            AbstractDungeon.eventList.remove(VaultDoorEvent.ID);
+            logger.info("Event List: " + AbstractDungeon.eventList.toString());
+        }
+    }
 }
