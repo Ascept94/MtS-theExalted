@@ -54,7 +54,7 @@ public class MagneticPower extends AbstractPower implements CloneablePowerInterf
 
         ArrayList<AbstractPower> possiblePowers = new ArrayList<>();
         for (AbstractPower po : target.powers){
-            if (po.type == AbstractPower.PowerType.BUFF && po.amount >= 1 && po.ID != "Fading"){
+            if (po.type == AbstractPower.PowerType.BUFF && po.amount >= 1 && po.ID != "Fading" && po.ID != "Minion" && po.ID != "Life Link" && po.ID != "BeatOfDeath"){
                 possiblePowers.add(po);
             }
         }

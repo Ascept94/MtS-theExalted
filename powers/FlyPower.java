@@ -99,6 +99,11 @@ public class FlyPower extends AbstractPower implements CloneablePowerInterface {
         this.superstoredAmount = 0;
     }
 
+    @Override
+    public void onVictory() {
+        this.storedAmount = 0;
+        this.superstoredAmount = 0;
+    }
 
     @Override
     public void updateDescription() {
