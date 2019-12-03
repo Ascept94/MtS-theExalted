@@ -1,5 +1,6 @@
 package Bromod.potions;
 
+import Bromod.BroMod;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,14 +15,14 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 public class PlaceholderPotion extends AbstractPotion {
 
 
-    public static final String POTION_ID = Bromod.DefaultMod.makeID("PlaceholderPotion");
+    public static final String POTION_ID = BroMod.makeID("PlaceholderPotion");
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);
     
     public static final String NAME = potionStrings.NAME;
     public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
 
     public PlaceholderPotion() {
-        // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
+        // The bottle shape and inside is determined by potion size and color. The actual colors are the main BroMod.java
         super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.M, PotionColor.SMOKE);
         
         // Potency is the damage/magic number equivalent of potions.
