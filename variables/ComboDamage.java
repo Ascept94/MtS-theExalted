@@ -1,11 +1,12 @@
 package Bromod.variables;
 
 import Bromod.cards.AbstractComboCard;
+import Bromod.characters.TheExalted;
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import Bromod.cards.AbstractDefaultCard;
 
-import static Bromod.DefaultMod.makeID;
+import static Bromod.BroMod.makeID;
 
 public class ComboDamage extends DynamicVariable {
 
@@ -26,10 +27,20 @@ public class ComboDamage extends DynamicVariable {
     }
 
     @Override
-    public int value(AbstractCard card){ return card.baseDamage * (int)Math.pow(2,((AbstractComboCard) card).ComboCounter) + (card.damage - card.baseDamage); }
+    public int value(AbstractCard card){
+        if (TheExalted.hasAscaris()){
+            return (int)(card.baseDamage * Math.pow(1.5f,((AbstractComboCard) card).ComboCounter) + (card.damage - card.baseDamage));
+        }
+        return card.baseDamage * (int)Math.pow(2,((AbstractComboCard) card).ComboCounter) + (card.damage - card.baseDamage);
+    }
 
     @Override
-    public int baseValue(AbstractCard card){ return card.baseDamage * (int)Math.pow(2,((AbstractComboCard) card).ComboCounter); }
+    public int baseValue(AbstractCard card){
+        if (TheExalted.hasAscaris()){
+            return (int)(card.baseDamage * Math.pow(1.5f,((AbstractComboCard) card).ComboCounter));
+        }
+        return card.baseDamage * (int)Math.pow(2,((AbstractComboCard) card).ComboCounter);
+    }
 
     @Override
     public boolean upgraded(AbstractCard card) {
