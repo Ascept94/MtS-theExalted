@@ -2,5 +2,33 @@
 "Bromod:PlaceholderPotion": {
         "NAME": "Placeholder Potion",
         "DESCRIPTIONS": ["Gain ", " At the end of your turn, lose ", " Strength."]
-}
+},
+        "Bromod:HealthRestore": {
+                "NAME": "Health Restore",
+                "DESCRIPTIONS": ["At the end of the next #b", " turns, gain #b2 HP."]
+        },
+        "Bromod:EnergyRestore": {
+                "NAME": "Energy Restore",
+                "DESCRIPTIONS": ["At the start of the next #b", " turns, gain #b1 Energy."]
+        },
+        "Bromod:AmmoRestore": {
+                "NAME": "Ammo Restore",
+                "DESCRIPTIONS": ["At the start of the next #b", " turns, draw #b1 additional card."]
+        },
+        "Bromod:ShieldRestore": {
+                "NAME": "Shield Restore",
+                "DESCRIPTIONS": ["At the end of the next #b", " turns, gain #b3 Block."]
+        },
+        "Bromod:Forma": {
+                "NAME": "Forma",
+                "DESCRIPTIONS": ["Discard a card from your hand. It costs 0 this combat."]
+        },
+        "Bromod:Kuva": {
+                "NAME": "Kuva",
+                "DESCRIPTIONS": ["Transform a card in your hand."]
+        },
+        "Bromod:ClemClone": {
+                "NAME": "Clem Clone",
+                "DESCRIPTIONS": ["Clem?"]
+        }
 }

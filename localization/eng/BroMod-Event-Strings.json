@@ -17,5 +17,43 @@
       "[Leave]",
       "Select card to remove."
     ]
+  },
+  "Bromod:DragonKeysEvent": {
+    "NAME": "Gear Up",
+    "DESCRIPTIONS": [
+      "You spend a few minutes checking your build for your next mission. NL #yOrdis says something, but you don't care to listen. NL #b\"Ordis #bhas #bbeen #bcounting #bstars, #boperator... NL #b~All~ #b~accounted~ #b~for!\"~",
+      "Carrying the #pcorrupted #yDragon #yKeys is dangerous, NL but #ytreasure surely awaits for those brave enough to open the ancient #yOrokin #yVaults.",
+      "#b\"No, #bOrdis #bis #bnot #bequipped #bto #bfeel #benvy...\"",
+      "You are done here."
+    ],
+    "OPTIONS": [
+      "[Challenge] #rEquip #rthe #rDragon #rKeys.",
+      "[Upgrade Mods] #gUpgrade #ga #gcard.",
+      "[Craft Gear] #gGain #gsome #gspecial #gpotions.",
+      "[Shut up Ordis] Leave.",
+      "Leave.",
+      "Equip #rBleeding #yDragon #yKey.",
+      "Equip #bDecaying #yDragon #yKey.",
+      "Equip #gExtinguished #yDragon #yKey.",
+      "Equip #pHobbled #yDragon #yKey.",
+      "Select card to upgrade."
+    ]
+  },
+  "Bromod:VaultDoorEvent": {
+    "NAME": "Ancient Orokin Vault",
+    "DESCRIPTIONS": [
+      "You come up to a magnificent door, #ygolden and ivory, clearly of #yOrokin design. NL There's an strange mechanism that resembles a lock in the front.",
+      "You don't take any risks with that locked door and complete your mission safely.",
+      "You put the #yDragon #yKey inside the mechanism and the door opens, revealing an ancient #yOrokin artifact. NL You take it and immediately feel the #p~c~ #p~u~ #p~r~ #p~s~ #p~e~ of the #yDragon #yKeys upon you."
+    ],
+    "OPTIONS": [
+      "Requires Decaying Dragon Key.",
+      "Requires Bleeding Dragon Key.",
+      "Requires Extinguished Dragon Key.",
+      "Requires Hobbled Dragon Key.",
+      "Leave.",
+      "[Open the Vault] #gGain #gan #gspecial #gRare #gCard. #rReplace #ryour #rDragon #rKey.",
+      "Ignore the door."
+    ]
   }
 }

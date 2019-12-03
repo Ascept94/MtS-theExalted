@@ -13,7 +13,7 @@
       "combos",
       "comboes"
     ],
-    "DESCRIPTION": "While on hand, combo cards double their damage and reduce their cost by one for the turn each time you play another combo card. (stacks two times). #yCombo damage scales off base damage and is not affected by powers."
+    "DESCRIPTION": "While on hand, combo cards double their damage (x1.5 if Ascaris is on) and reduce their cost by one for the turn each time you play another combo card. (stacks two times). #yCombo damage scales off base damage and is not affected by powers."
   },
   {
     "PROPER_NAME": "Blur",
@@ -153,5 +153,12 @@
       "temporary_hp"
     ],
     "DESCRIPTION": "Prevents damage. Unlike #yBlock, it's not lost between turns."
+  },
+  {
+    "PROPER_NAME": "Forma",
+    "NAMES": [
+      "forma"
+    ],
+    "DESCRIPTION": "A consumable that lets you discard a card from your hand and reduce it's cost to 0 this combat."
   }
 ]

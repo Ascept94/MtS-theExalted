@@ -209,7 +209,7 @@
   "Bromod:AdaptationPower": {
     "NAME": "Adaptation",
     "DESCRIPTIONS":
-    ["Whenever you receive attack damage, ALL enemies lose #b", " #yStrength for the turn."]
+    ["Whenever you receive an attack, you reduce damage taken from all attacks this turn by #b", " . Receiving multiple attacks stack this effect until the end of the turn"]
   },
   "Bromod:BerserkerPower": {
     "NAME": "Berserker",
@@ -252,8 +252,8 @@
     ["Operator, you have foundry items ready - CLAIM THEM NOW! - at your earliest convenience.",
       "Operator, my foundry has completed a new item! Does this please the Operator?",
       "Foundry items ready to claim, Operator.",
-      "Gun-gun-gun-- Hmmm... foundry has items for you, Operator.",
-      "Ordis has completed a foundry task. No,don't mention it!",
+      "GUN-GUN-GUN-- Hmmm... foundry has items for you, Operator.",
+      "Ordis has completed a foundry task. No, don't mention it!",
       "Cephalon Ordis has completed a build. Check the foundry.",
       "Foundry items can be claimed, Operator. Are you pleased?",
       "Items in the foundry are being build. Next turn, add #b", " random card to your hand.", " random cards to your hand."]
@@ -262,5 +262,35 @@
     "NAME": "Temp. Regen",
     "DESCRIPTIONS":
     ["At the end of your turn, gain #b" , " #yTemporary #yHP."]
+  },
+  "Bromod:HealthRestorePower": {
+    "NAME": "Health Restore",
+    "DESCRIPTIONS":
+    ["At the end of your next #b" , " turns, heal #b2 #yHP.", "At the end of your turn, heal #b2 #yHP."]
+  },
+  "Bromod:EnergyRestorePower": {
+    "NAME": "Energy Restore",
+    "DESCRIPTIONS":
+    ["At the start of your next #b" , " turns, gain [E]", "At the start of your turn, gain [E]"]
+  },
+  "Bromod:AmmoRestorePower": {
+    "NAME": "Ammo Restore",
+    "DESCRIPTIONS":
+    ["At the start of your next #b" , " turns, draw #b1 additional card.", "At the start of your turn, draw #b1 additional card."]
+  },
+  "Bromod:ShieldRestorePower": {
+    "NAME": "Shield Restore",
+    "DESCRIPTIONS":
+    ["At the end of your next #b" , " turns, gain #b3 #yBlock.", "At the end of your turn, gain #b3 #yBlock."]
+  },
+  "Bromod:FleetingExpertisePower": {
+    "NAME": "Fleeting Expertise",
+    "DESCRIPTIONS":
+    ["Until the end of the turn, all your cards cost 0 and are Exhausted on use."]
+  },
+  "Bromod:BlindRagePower": {
+    "NAME": "Blind Rage",
+    "DESCRIPTIONS":
+    ["Deal double damage. Attacks cost an additional [E]"]
   }
 }

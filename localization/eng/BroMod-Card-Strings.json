@@ -87,10 +87,10 @@
     "DESCRIPTION": "Gain !M! bromod:Flight. NL You recover up to !M! bromod:Flight at the start of your turn.",
     "UPGRADE_DESCRIPTION":""
   },
-  "Bromod:Forma": {
-    "NAME": "Forma",
-    "DESCRIPTION": "Discard a random card from your hand. NL It costs 0 this combat. NL Exhaust.",
-    "UPGRADE_DESCRIPTION":"Discard a card from your hand. NL It costs 0 this combat. NL Exhaust."
+  "Bromod:FormaBlueprint": {
+    "NAME": "Forma Blueprint",
+    "DESCRIPTION": "Exhaust a random card from your hand. Add 1 bromod:Forma to your hand. NL Exhaust",
+    "UPGRADE_DESCRIPTION":"Exhaust a card from your hand. Add 1 bromod:Forma to your hand. NL Exhaust"
   },
   "Bromod:RadialJavelin": {
     "NAME": "Radial Javelin",
@@ -384,6 +384,26 @@
   "Bromod:Foundry": {
     "NAME": "The Foundry",
     "DESCRIPTION": "At the start of every other turn, exhaust a card from your hand and, next turn, add a random card to your hand.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:FleetingExpertise": {
+    "NAME": "Fleeting Expertise",
+    "DESCRIPTION": "Until the end of the turn, all your cards cost 0 and are Exhausted on use. NL Exhaust",
+    "UPGRADE_DESCRIPTION": "Until the end of the turn, all your cards cost 0 and are Exhausted on use."
+  },
+  "Bromod:BlindRage": {
+    "NAME": "Blind Rage",
+    "DESCRIPTION": "Deal double damage. Attacks cost an additional [E]",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:SpoiledStrike": {
+    "NAME": "Spoiled Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Vulnerable. NL Draw 1 less card for the next !M! turns.",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "Bromod:NarrowMinded": {
+    "NAME": "Narrow Minded",
+    "DESCRIPTION": "Increase one active buff by the combined amount of all other powers, then remove all other powers. NL Exhaust",
     "UPGRADE_DESCRIPTION": ""
   }
 }

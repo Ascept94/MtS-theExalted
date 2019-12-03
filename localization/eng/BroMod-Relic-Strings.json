@@ -1,36 +1,4 @@
 {
-  "Bromod:PlaceholderRelic": {
-    "NAME": "Placeholder Energy Relic",
-    "FLAVOR": "The snake is a friend.",
-    "DESCRIPTIONS": [
-      "Gain #b1 [E] ."
-    ]
-  },
-  "Bromod:PlaceholderRelic2": {
-    "NAME": "Placeholder Relic 2",
-    "FLAVOR": "You feel stronger.",
-    "DESCRIPTIONS": [
-      "At the start of each combat, gain #b1 #yStrength."
-    ]
-  },
-  "Bromod:DefaultClickableRelic": {
-    "NAME": "Right-Clicky Relic",
-    "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
-    "DESCRIPTIONS": [
-      "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
-      "YOU ARE MINE!"
-    ]
-  },
-  "Bromod:BottledPlaceholderRelic": {
-    "NAME": "Bottled Placeholder",
-    "FLAVOR": "What is this?",
-    "DESCRIPTIONS": [
-      "Choose a card. Whenever you take play any card, draw the chosen card.",
-      "Whenever you play a card, draw ",
-      ".",
-      "Select a card to bottle for "
-    ]
-  },
   "Bromod:Ordis": {
     "NAME": "Broken Cephalon",
     "FLAVOR": "Let me help you - CLEAN THIS MESS - organize your mod library, operator.",
@@ -45,6 +13,52 @@
     "DESCRIPTIONS": [
       "The Ascaris is limiting the powers of your warframe. You can remove it by right-cliking this relic #g(Enables #geasy #gmode).",
       "The Ascaris has been removed and your powers returned. Card and power effects have been restored to their strongest versions."
+    ]
+  },
+  "Bromod:BleedingDragonKey": {
+    "NAME": "Bleeding Dragon Key",
+    "FLAVOR": "Flesh rots and blood evaporates.",
+    "DESCRIPTIONS": [
+      "Reduce your max HP by 75%."
+    ]
+  },
+  "Bromod:DecayingDragonKey": {
+    "NAME": "Decaying Dragon Key",
+    "FLAVOR": "Metal rusts and bones decay.",
+    "DESCRIPTIONS": [
+      "Reduce ALL block gain by 50%."
+    ]
+  },
+  "Bromod:ExtinguishedDragonKey": {
+    "NAME": "Extinguished Dragon Key",
+    "FLAVOR": "Strengths falter and breath is lost.",
+    "DESCRIPTIONS": [
+      "Reduce ALL damage dealt by 50%."
+    ]
+  },
+  "Bromod:HobbledDragonKey": {
+    "NAME": "Hobbled Dragon Key",
+    "FLAVOR": "Feet doubt and steps miss",
+    "DESCRIPTIONS": [
+      "Your turn ends immediately after playing your 4th card each turn."
+    ]
+  },
+  "Bromod:ArcaneAegis": {
+    "NAME": "Arcane Aegis",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "After receiving damage 6 times, prevent the next time you'd receive damage."
+    ]
+  },
+  "Bromod:DragonsCurse": {
+    "NAME": "Dragon's Curse",
+    "FLAVOR": "The Orokin didn't want their artifacts stolen, so they made sure that the ones who did, couldn't go far.",
+    "DESCRIPTIONS": [
+      "At the start of combat, gain the effects of a single random Dragon Key.",
+      "#rBleeding #rDragon. NL Reduce your max HP by 75%. Recover lost HP at the end of combat.",
+      "#bDecaying #bDragon. NL Reduce ALL block gain by 50%.",
+      "#gExtinguished #gDragon. NL Reduce ALL damage dealt by 50%.",
+      "#pHobbled #pDragon. NL Your turn ends immediately after playing your 4th card each turn."
     ]
   }
 }
